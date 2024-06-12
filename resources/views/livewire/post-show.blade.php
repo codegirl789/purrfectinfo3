@@ -1,13 +1,13 @@
 <div class="post-and-buttons container">
     <div class="post-container bg-white rounded-xl mt-4">
-        <div class="flex flex-col md:flex-row flex-1 md:px-4 px-2 md:pr-0 md:py-6 py-3">
+        <div class="flex flex-col md:flex-row flex-1  p-4 ">
 
             {{-- <div class="flex-none mx-auto">
                 <a href="#">
                     <img src="https://i.pravatar.cc/60" alt="avatar" class="w-10 h-10 rounded-full">
                 </a>
             </div> --}}
-            <div class="mx-4">
+            <div>
 
                 <a href="#">
                     <img src="https://i.pravatar.cc/800" alt="avatar" class="w-full h-96 object-cover rounded mb-2">
@@ -35,7 +35,7 @@
                     <div
                         class="flex text-center items-center md:text-xs text-xxs text-gray-400 font-semibold space-x-1">
                         <div class="hidden md:block font-semibold text-gray-800">
-                            {{ $post->Category->name }}
+                            {{ $post->SuperCategory->name }}
                         </div>
                         <div class="hidden md:block">&bull;</div>
                         <div>{{ $post->SubCategory->name }}</div>
@@ -67,8 +67,8 @@
                             </button>
                         </div>
                         <div
-                            class="bg-yellow text-white text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2">
-                            open
+                            class="{{ $post->status->classes }} text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2">
+                            {{ $post->Category->name }}
                         </div>
                         <button @click="isOpen=!isOpen"
                             class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in py-2 px-3">
@@ -78,13 +78,13 @@
                                     style="color: rgba(163, 163, 163, .5)">
                             </svg>
                             <ul x-cloak x-show="isOpen" @click.away="isOpen=false"
-                                x-transition.open.top.left.duration.500ms @keydown.escape.window="isOpen=false"
-                                class=" absolute w-44 text-left font-semibold bg-white shadow-dialog rounded-xl py-3 md:ml-8 right-0 md:left-0 z-20 mt-4 md:mt-0">
+                                x-transition.open.top.right.duration.500ms @keydown.escape.window="isOpen=false"
+                                class=" absolute w-44 text-right font-semibold bg-white shadow-dialog rounded-xl py-2 md:ml-8 right-0 md:right-0 z-20 mt-8 md:mt-0">
                                 <li><a href="#"
-                                        class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">Mark
+                                        class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-2">Mark
                                         as Spam</a></li>
                                 <li><a href="#"
-                                        class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">Delete
+                                        class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-2">Delete
                                         Post</a></li>
                             </ul>
                         </button>
@@ -103,9 +103,9 @@
                     class="bg-blue-500 md:w-32 w-28 text-white rounded-xl md:text-sm text-xs px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
                     Reply
                 </button>
-                <div x-cloak x-show="replyOpen" x-transition.open.top.left.duration.500ms
+                <div x-cloak x-show="replyOpen" x-transition.open.top.right.duration.500ms
                     @click.away="replyOpen = false" @keydown.escape.window="replyOpen=false"
-                    class=" absolute z-10 md:w-104 w-64 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl md:ml-2 mt-2">
+                    class=" absolute z-10 md:w-104 w-64 text-right font-semibold text-sm bg-white shadow-dialog rounded-xl md:ml-2 mt-2">
                     <form action="#" class="space-y-4 px-4 py-6">
                         <div>
                             <textarea name="post_comment" id="post_comment" cols="30" rows="4"
@@ -144,9 +144,9 @@
 
                 </button>
 
-                <div x-cloak x-show="statusOpen" x-transition-.open.top.left.duration.500ms
+                <div x-cloak x-show="statusOpen" x-transition-.open.top.right.duration.500ms
                     @click.away="statusOpen=false" @keydown.escape.window="statusOpen=false"
-                    class=" absolute z-10 md:w-104 w-64 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl md:ml-2 -right-4 md:left-0  mt-2">
+                    class=" absolute z-10 md:w-104 w-64 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl md:ml-2 -right-4 md:right-0  mt-2">
                     <form action="#" class="space-y-4 px-4 py-6">
                         <div class="space-y-2">
                             <div>

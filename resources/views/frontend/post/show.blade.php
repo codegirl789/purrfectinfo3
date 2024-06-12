@@ -41,17 +41,17 @@
                             <div>10 hours ago</div>
                         </div>
 
-                        <div x-data="{ commentOpen: false }" class="flex items-center space-x-2">
-                            <button @click="commentOpen = !commentOpen"
+                        <div x-data="{ commentOpen1: false }" class="flex items-center space-x-2">
+                            <button @click="commentOpen1 = !commentOpen1"
                                 class="relative bg-gray-100 mt-3 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in py-2 px-3 ">
                                 <svg fill="currentColor" width="24" height="6">
                                     <path
                                         d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z"
                                         style="color: rgba(163, 163, 163, .5)">
                                 </svg>
-                                <ul x-cloaked x-show="commentOpen" x-transition.oen.top.left.duration.500ms
-                                    @click.away="commentOpen=false" @keydown.escape.window="commentOpen=false"
-                                    class="absolute z-10 shadow-dialog w-44 font-semibold bg-white  rounded-xl text-left py-3 md:ml-8 right-0 md:left-0 mt-4 md:mt-0">
+                                <ul x-cloaked x-show="commentOpen1" x-transition.oen.top.right.duration.500ms
+                                    @click.away="commentOpen1=false" @keydown.escape.window="commentOpen1=false"
+                                    class="absolute z-10 shadow-dialog w-44 font-semibold bg-white  rounded-xl text-right py-3 md:ml-8 right-0 md:right-0 mt-4 md:mt-0">
                                     <a href="#"
                                         class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark
                                         As Spam</a>
@@ -98,17 +98,18 @@
                             <div>10 hours ago</div>
                         </div>
 
-                        <div class="flex items-center space-x-2">
+                        <div x-data="{ commentOpen2: false }" class="flex items-center space-x-2">
 
-                            <button
+                            <button @click="commentOpen2 = !commentOpen2"
                                 class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in py-2 px-3">
                                 <svg fill="currentColor" width="24" height="6">
                                     <path
                                         d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z"
                                         style="color: rgba(163, 163, 163, .5)">
                                 </svg>
-                                <ul
-                                    class="hidden absolute shadow-dialog w-44 font-semibold bg-white  rounded-xl text-left py-3 ml-8">
+                                <ul x-cloaked x-show="commentOpen2" x-transition.oen.top.right.duration.500ms
+                                    @click.away="commentOpen2=false" @keydown.escape.window="commentOpen2=false"
+                                    class="absolute z-10 shadow-dialog w-44 font-semibold bg-white  rounded-xl text-right py-3 md:ml-8 right-0 md:right-0 mt-4 md:mt-0">
                                     <a href="#"
                                         class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark
                                         As Spam</a>
@@ -150,17 +151,18 @@
                             <div>10 hours ago</div>
                         </div>
 
-                        <div class="flex items-center space-x-2">
+                        <div x-data="{ commentOpen3: false }" class="flex items-center space-x-2">
 
-                            <button
+                            <button @click="commentOpen3 = !commentOpen3"
                                 class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in py-2 px-3">
                                 <svg fill="currentColor" width="24" height="6">
                                     <path
                                         d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z"
                                         style="color: rgba(163, 163, 163, .5)">
                                 </svg>
-                                <ul
-                                    class="hidden absolute shadow-dialog w-44 font-semibold bg-white  rounded-xl text-left py-3 ml-8">
+                                <ul x-cloaked x-show="commentOpen3" x-transition.open.top.right.duration.500ms
+                                    @click.away="commentOpen3=false" @keydown.escape.window="commentOpen3=false"
+                                    class="absolute z-10 shadow-dialog w-44 font-semibold bg-white  rounded-xl text-right py-3 md:ml-8 right-0 md:right-0 mt-4 md:mt-0">
                                     <a href="#"
                                         class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark
                                         As Spam</a>
