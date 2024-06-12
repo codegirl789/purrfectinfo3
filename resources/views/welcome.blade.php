@@ -1,8 +1,8 @@
 <x-main-layout>
 
-    <div class="filters flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+    <div class="filters flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 mb-2">
         <div class="md:w-1/3 w-full">
-            <select name="category" id="category" class="w-full py-2 px-4 border-none rounded-xl">
+            <select name="category" id="category" class="w-full py-2 cursor-pointer px-4 border-none rounded-xl">
                 <option value="category one">Category One</option>
                 <option value="category two">Category Two</option>
                 <option value="category three">Category Three</option>
@@ -11,7 +11,8 @@
         </div>
 
         <div class="md:w-1/3 w-full">
-            <select name="filter" id="filter" class="w-full py-2 font-normal px-4 border-none rounded-xl">
+            <select name="filter" id="filter"
+                class="w-full py-2 cursor-pointer font-normal px-4 border-none rounded-xl">
                 <option value="filter one">Filter One</option>
                 <option value="filter two">Filter Two</option>
                 <option value="filter three">Filter Three</option>
@@ -39,7 +40,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-0">
         @foreach ($posts as $post)
-            <div class="rounded-2xl shadow hover:shadow-card cursor-pointer bg-white p-4 pt-2">
+            <div class="rounded-2xl shadow hover:shadow-card cursor-pointer bg-white p-3">
                 {{-- <a href="{{ route('posts.show', $post->id) }}" class="font-semibold text-2xl hover:underline">
                     {{ ucfirst($post->title) }}</a> --}}
 
@@ -53,9 +54,9 @@
                         Lorem ipsum dolor
                         kdls</a>
                 </div>
-                <p class="line-clamp-3 pt-2">
+                <a href="{{ route('posts.show', $post->id) }}" class="line-clamp-3 pt-2">
                     {{ $post->content }}
-                </p>
+                </a>
 
                 <div class="flex items-center justify-between pt-2">
                     <div class="flex space-x-1 items-center">
@@ -94,9 +95,9 @@
                                 </span>
                             </div>
                             <div class="">
-                                <i class="fa-regular fa-lg fa-bookmark"></i>
+                                <i class="fa-regular fa-xl fa-comment"></i>
                                 <span class="text-lg text-gray-500">
-                                    7
+                                    {{ $post->Comments->count() }}
                                 </span>
                             </div>
                         </div>

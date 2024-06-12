@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\PostUser;
 use App\Models\Status;
@@ -156,5 +157,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         PostUser::factory(300)->create();
+        Comment::factory(300)->create();
     }
 }

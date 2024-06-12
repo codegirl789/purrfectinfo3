@@ -13,7 +13,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $posts = Post::paginate(16);
+    $posts = Post::latest()->paginate(16);
     return view('welcome', compact('posts'));
 })->name('homepage');
 

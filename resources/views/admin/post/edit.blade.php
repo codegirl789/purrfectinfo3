@@ -46,7 +46,7 @@
                     <input type="file" name="image"
                         class="py-2 px-4 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-gray-500">
                 </div>
-                <textarea name="content" rows="3" placeholder="Content"
+                <textarea name="content" rows="3" placeholder="Content" id="myeditorinstance"
                     class="py-2 px-4 my-2 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-gray-500">{{ $post->content }}</textarea>
                 <button type="submit"
                     class="py-2 px-4 my-2 bg-blue hover:bg-blue-hover text-white w-full outline-none border-none rounded-lg shadow placeholder:text-gray-500">Edit

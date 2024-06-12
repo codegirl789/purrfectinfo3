@@ -9,45 +9,43 @@
             </div> --}}
             <div>
 
-                <a href="#">
-                    <img src="https://i.pravatar.cc/800" alt="avatar" class="w-full h-96 object-cover rounded mb-2">
-                </a>
+
 
                 <h4 class="text-2xl font-semibold flex justify-between items-center">
                     <a href="#" class="hover:underline">{{ ucfirst($post->title) }}</a>
                 </h4>
 
-                <div class="text-gray-600 mt-2 text-base">
-                    {{ $post->content }}
-                    <br>
-                    <br>
+                <div class="text-gray-900 mt-2 text-base">
 
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus atque dolores distinctio, odit
+                        consequuntur repellendus quis necessitatibus nisi sed cumque eaque provident commodi velit quod
+                        vero dolorum, enim error qui. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil
+                        molestias, eum voluptatum nemo delectus provident iste explicabo vitae ut harum aliquid maxime
+                        cumque architecto voluptatibus tenetur neque asperiores sapiente molestiae.
+                    </div>
+                    <a href="#">
+                        <img src="https://i.pravatar.cc/1200" alt="avatar"
+                            class="w-full md:h-96 h-52 object-cover rounded my-2">
+                    </a>
 
+                    {!! $post->content !!}
 
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel delectus sed laborum fuga corporis
-                    molestias aut repudiandae eaque enim, harum aliquid porro est consequuntur totam veritatis esse
-                    rerum numquam. Inventore ullam perferendis quos, alias quas corporis cum iste mollitia a.
-
-                    <br>
                 </div>
 
                 <div class="flex flex-col md:flex-row md:items-center justify-between md:mt-6 mt-2">
                     <div
-                        class="flex text-center items-center md:text-xs text-xxs text-gray-400 font-semibold space-x-1">
+                        class="flex text-center items-center md:text-xs text-xxs text-gray-500 font-semibold space-x-1">
                         <div class="hidden md:block font-semibold text-gray-800">
                             {{ $post->SuperCategory->name }}
                         </div>
                         <div class="hidden md:block">&bull;</div>
                         <div>{{ $post->SubCategory->name }}</div>
                         <div>&bull;</div>
-                        <div class="text-gray-500">3 Comments</div>
+                        <div>{{ $post->Comments->count() }} Comments</div>
                         <div>&bull;</div>
-                        <div class="text-gray-500 text-xs">{{ $post->created_at->diffForHumans() }}</div>
+                        <div class="text-gray-400 text-xs">{{ $post->created_at->diffForHumans() }}</div>
                     </div>
-
-
-
-
 
                     <div x-data="{ isOpen: false }"
                         class="flex justify-between md:justify-normal items-center md:space-x-2 mt-2 md:mt-0">
@@ -113,12 +111,12 @@
                                 placeholder="Go ahead, don't be shy. Share your thoughts..."></textarea>
                         </div>
 
-                        <div class="flex items-center space-x-3">
-                            <button type="button"
-                                class="flex items-center justify-center h-11 w-1/2 text-sm bg-blue-500 text-white font-semibold rounded-xl border border-blue hover:bg-blue-600  transition duration-150 ease-in px-6 py-3">
-                                Post Comment
-                            </button>
-                            <button type="button"
+                        {{-- <div class="flex items-center space-x-3"> --}}
+                        <button type="button"
+                            class="flex items-center w-full justify-center text-sm bg-blue-500 text-white font-semibold rounded-xl border border-blue hover:bg-blue-600  transition duration-150 ease-in px-6 py-2">
+                            Post Comment
+                        </button>
+                        {{-- <button type="button"
                                 class="flex items-center justify-center w-32 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3">
                                 <svg class="text-gray-600 w-4 transform -rotate-45" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -126,8 +124,8 @@
                                         d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                                 </svg>
                                 <span class="ml-1">Attach</span>
-                            </button>
-                        </div>
+                            </button> --}}
+                        {{-- </div> --}}
 
                     </form>
                 </div>

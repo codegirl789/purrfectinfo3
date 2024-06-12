@@ -21,7 +21,12 @@
 
     <livewire:styles />
 
+    <script src="https://cdn.tiny.cloud/1/d3g7fv7twj9inrxh3amwswwkz04erp2vhbert7wx6kcebbhz/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
     @vite(['resources/css/app.css'])
+
+
 
 </head>
 
@@ -189,6 +194,13 @@
         </div>
     </main>
 
+    <script>
+        tinymce.init({
+            selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
+            plugins: 'code table lists',
+            toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
+        });
+    </script>
 
     <livewire:scripts />
 </body>

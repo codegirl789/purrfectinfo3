@@ -13,7 +13,7 @@
                 @csrf
                 <input type="text" placeholder="Title" name="title"
                     class="py-2 px-4 my-2 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
-                <div class="flex justify-between items-start space-x-2">
+                <div class="flex justify-between items-start space-x-2 mt-1">
                     <select name="super_category_id"
                         class="py-2 px-4  bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
                         <option value="#">Select Super Category</option>
@@ -44,11 +44,11 @@
                     </select>
                 </div>
                 <input type="file" name="image"
-                    class="py-2 px-4 mt-2 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
-                <textarea name="content" rows="3" placeholder="Content"
-                    class="py-2 px-4 my-2 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black"></textarea>
+                    class="py-2 px-4 my-2 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
+                <textarea name="content" rows="3" placeholder="Content" id="myeditorinstance"
+                    class="py-2 px-4 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black"></textarea>
                 <button type="submit"
-                    class="py-2 px-4 my-2 bg-blue hover:bg-blue-hover text-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">Create
+                    class="py-2 px-4 my-4 bg-blue hover:bg-blue-hover text-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">Create
                     Post</button>
             </form>
         </div>
