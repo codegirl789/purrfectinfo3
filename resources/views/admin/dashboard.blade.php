@@ -1,34 +1,39 @@
 <x-admin-layout>
 
     <div class="grid grid-cols-3 gap-4">
-        <div
+        <a href="{{ route('homepage') }}" target="_blank"
+            class="card text-xl font-semibold rounded-lg shadow flex justify-center items-center p-8 bg-blue hover:bg-blue-hover text-white cursor-pointer">
+            Visit Website
+        </a>
+        {{-- <a href="{{ route('admin.dashboard.index') }}"
             class="card bg-white text-xl font-semibold rounded-lg shadow flex justify-center items-center p-8 hover:bg-blue hover:text-white cursor-pointer">
-            <a href="{{ route('admin.dashboard.index') }}">Dashboard</a>
-        </div>
-        <div
+            Dashboard
+        </a> --}}
+        <a href="{{ route('admin.post.index') }}"
             class="card bg-white text-xl font-semibold rounded-lg shadow flex justify-center items-center p-8 hover:bg-blue hover:text-white cursor-pointer">
-            <a href="{{ route('admin.post.index') }}">All Posts</a>
-        </div>
-        <div
+            All Posts
+        </a>
+        <a href="{{ route('admin.post.create') }}"
             class="card bg-white text-xl font-semibold rounded-lg shadow flex justify-center items-center p-8 hover:bg-blue hover:text-white cursor-pointer">
-            <a href="{{ route('admin.post.create') }}">Create New Post</a>
-        </div>
-        <div
+            Create New Post
+        </a>
+        <a href="{{ route('admin.category.index') }}"
             class="card bg-white text-xl font-semibold rounded-lg shadow flex justify-center items-center p-8 hover:bg-blue hover:text-white cursor-pointer">
-            <a href="{{ route('admin.category.index') }}">All Categories</a>
-        </div>
-        <div
+            All Categories
+        </a>
+        <a href="{{ route('admin.category.create') }}"
             class="card bg-white text-xl font-semibold rounded-lg shadow flex justify-center items-center p-8 hover:bg-blue hover:text-white cursor-pointer">
-            <a href="{{ route('admin.category.create') }}">Create New Category</a>
-        </div>
-        <div
+            Create New Category
+        </a>
+        <a href="{{ route('admin.status.index') }}"
             class="card bg-white text-xl font-semibold rounded-lg shadow flex justify-center items-center p-8 hover:bg-blue hover:text-white cursor-pointer">
-            <a href="{{ route('admin.status.index') }}">All Statuses</a>
-        </div>
-        <div
+            All Statuses
+        </a>
+        <a href="{{ route('admin.status.create') }}"
             class="card bg-white text-xl font-semibold rounded-lg shadow flex justify-center items-center p-8 hover:bg-blue hover:text-white cursor-pointer">
-            <a href="{{ route('admin.status.create') }}">Create New Status</a>
-        </div>
+            Create New Status
+        </a>
+    </div>
     </div>
 
 </x-admin-layout>

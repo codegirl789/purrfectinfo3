@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Purrfect Info 3</title>
+    <title>Purrfect Info 3 - Admin</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -136,31 +136,31 @@
                     @auth
                         <div class="w-full flex flex-col px-4 mb-4">
                             <a href="{{ route('admin.dashboard.index') }}"
-                                class="my-1 text-center bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
+                                class="my-1 text-center bg-gray-50 hover:bg-blue hover:text-white rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
                                 Dashboard
                             </a>
                             <a href="{{ route('admin.post.index') }}"
-                                class="my-1 text-center bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
+                                class="my-1 text-center bg-gray-50 hover:bg-blue hover:text-white rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
                                 All Posts
                             </a>
                             <a href="{{ route('admin.post.create') }}"
-                                class="my-1 text-center bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
+                                class="my-1 text-center bg-gray-50 hover:bg-blue hover:text-white rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
                                 Create new post
                             </a>
                             <a href="{{ route('admin.category.index') }}"
-                                class="my-1 text-center bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
+                                class="my-1 text-center bg-gray-50 hover:bg-blue hover:text-white rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
                                 All Categories
                             </a>
                             <a href="{{ route('admin.category.create') }}"
-                                class="my-1 text-center bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
+                                class="my-1 text-center bg-gray-50 hover:bg-blue hover:text-white rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
                                 Create new category
                             </a>
                             <a href="{{ route('admin.status.index') }}"
-                                class="my-1 text-center bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
+                                class="my-1 text-center bg-gray-50 hover:bg-blue hover:text-white rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
                                 All Statuses
                             </a>
                             <a href="{{ route('admin.status.create') }}"
-                                class="my-1 text-center bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
+                                class="my-1 text-center bg-gray-50 hover:bg-blue hover:text-white rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
                                 Create new status
                             </a>
                         </div>

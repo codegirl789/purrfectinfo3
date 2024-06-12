@@ -36,15 +36,26 @@ Route::middleware('auth')->group(function () {
 
     Route::get('admin/posts', [AdminPostController::class, 'index'])->name('admin.post.index');
     Route::get('admin/post/create', [AdminPostController::class, 'create'])->name('admin.post.create');
+    Route::get('admin/post/show/{id}', [AdminPostController::class, 'show'])->name('admin.post.show');
     Route::post('admin/post/store', [AdminPostController::class, 'store'])->name('admin.post.store');
+    Route::get('admin/post/edit/{id}', [AdminPostController::class, 'edit'])->name('admin.post.edit');
+    Route::patch('admin/post/update/{id}', [AdminPostController::class, 'update'])->name('admin.post.update');
+    Route::delete('admin/post/destroy/{id}', [AdminPostController::class, 'destroy'])->name('admin.post.destroy');
 
     Route::get('admin/categories', [AdminCategoryController::class, 'index'])->name('admin.category.index');
     Route::get('admin/category/create', [AdminCategoryController::class, 'create'])->name('admin.category.create');
+    Route::get('admin/category/show/{id}', [AdminCategoryController::class, 'show'])->name('admin.category.show');
     Route::post('admin/category/store', [AdminCategoryController::class, 'store'])->name('admin.category.store');
+    Route::get('admin/category/edit/{id}', [AdminCategoryController::class, 'edit'])->name('admin.category.edit');
+    Route::patch('admin/category/update/{id}', [AdminCategoryController::class, 'update'])->name('admin.category.update');
+    Route::delete('admin/category/destroy/{id}', [AdminCategoryController::class, 'destroy'])->name('admin.category.destroy');
 
     Route::get('admin/statuses', [AdminStatusController::class, 'index'])->name('admin.status.index');
     Route::get('admin/status/create', [AdminStatusController::class, 'create'])->name('admin.status.create');
     Route::post('admin/status/store', [AdminStatusController::class, 'store'])->name('admin.status.store');
+    Route::get('admin/status/edit/{id}', [AdminStatusController::class, 'edit'])->name('admin.status.edit');
+    Route::patch('admin/status/update/{id}', [AdminStatusController::class, 'update'])->name('admin.status.update');
+    Route::delete('admin/status/destroy/{id}', [AdminStatusController::class, 'destroy'])->name('admin.status.destroy');
 });
 
 require __DIR__ . '/auth.php';

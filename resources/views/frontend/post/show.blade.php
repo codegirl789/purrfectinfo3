@@ -15,6 +15,7 @@
     <div class="comments-container relative space-y-6 md:ml-24 pt-4 my-8 mt-1 ">
         <div
             class="comment-container relative flex hover:shadow-card transition duration-150 ease-in bg-white rounded-xl ">
+
             <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
                 <div class="flex-none">
                     <a href="#">

@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use App\Models\Category;
 use App\Models\Status;
+use App\Models\SubCategory;
+use App\Models\SuperCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,8 +22,11 @@ class PostFactory extends Factory
     {
         $status = Status::all()->random();
         $category = Category::all()->random();
+        $super_category = SuperCategory::all()->random();
+        $sub_category = SubCategory::all()->random();
         return [
-            'sub_category_id' => fake()->randomElement([1, 2, 3, 4]),
+            'super_category_id' => $super_category->id,
+            'sub_category_id' => $sub_category->id,
             'category_id' => $category->id,
             'status_id' => $status->id,
             'title' => fake()->words(8, true),

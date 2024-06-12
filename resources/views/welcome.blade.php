@@ -61,7 +61,7 @@
                     <div class="flex space-x-1 items-center">
                         <span>{{ $post->SubCategory->name }}</span>
                         <div class=""> &bull; </div>
-                        <span class="text-gray-500 text-sm"> {{ $post->SubCategory->Category->name }}</span>
+                        <span class="text-gray-500 text-sm"> {{ $post->SuperCategory->name }}</span>
                     </div>
                     <div class="text-gray-500 text-sm">
                         {{ $post->created_at->diffForHumans() }}
@@ -93,8 +93,8 @@
                         <div class="flex space-x-2">
 
                             <div
-                                class="   cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->status->classes }}">
-                                {{ $post->status->name }}
+                                class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->status->classes }} text-black">
+                                {{ $post->Category->name }}
                             </div>
                             <button @click="isOpen=!isOpen"
                                 class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in py-2 px-3">

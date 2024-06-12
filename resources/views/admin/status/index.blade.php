@@ -49,11 +49,16 @@
                             <td class="px-2 py-4">
                                 {{ $status->updated_at->diffForHumans() }}
                             </td>
-                            <td class="px-2 py-4 flex space-x-2 m-auto">
-                                <a href="#">
-                                    <i class="fas fa-lg fa-trash text-red"></i>
-                                </a>
-                                <a href="#">
+                            <td class="px-2 py-4 flex space-x-4 m-auto">
+                                <form action="{{ route('admin.status.destroy', $status->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        onclick="return confirm('Are you sure you want to delete this?');">
+                                        <i class="fas fa-lg fa-trash text-red"></i>
+                                    </button>
+                                </form>
+                                <a href="{{ route('admin.status.edit', $status->id) }}">
                                     <i class="fa-regular fa-lg fa-pen-to-square text-blue "></i>
                                 </a>
                             </td>

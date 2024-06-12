@@ -11,6 +11,11 @@ class Post extends Model
 
     protected $guarded = [];
 
+    public function SuperCategory()
+    {
+        return $this->belongsTo(SuperCategory::class);
+    }
+
     public function SubCategory()
     {
         return $this->belongsTo(SubCategory::class);
@@ -24,5 +29,10 @@ class Post extends Model
     public function status()
     {
         return $this->belongsTo(Status::class);
+    }
+
+    public function Users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

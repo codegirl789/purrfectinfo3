@@ -1,9 +1,9 @@
 <x-admin-layout>
-    <div class="bg-white p-4 rounded-lg shadow">
-        <div class="flex justify-between items-center">
+    <div class="bg-white px-2 py-4 rounded-lg shadow">
+        <div class="flex justify-between items-center mb-2">
             <x-admin.heading>All Posts</x-admin.heading>
             <a href="{{ route('admin.post.create') }}"
-                class="py-2 px-4 text-center bg-blue text-white w-full basis-36 rounded-lg shadow">
+                class="py-2 px-4 text-center bg-blue hover:bg-blue-hover text-white w-full basis-36 rounded-lg shadow">
                 Create Post
             </a>
         </div>
@@ -45,7 +45,9 @@
                                     class="w-14 h-14 object-cover rounded-full">
                             </th>
                             <td class="px-2 py-4">
-                                {{ $post->title }}
+                                <a href="{{ route('admin.post.show', $post->id) }}">
+                                    {{ $post->title }}
+                                </a>
                             </td>
                             <td class="px-2 py-4">
                                 {{ $post->SubCategory->name }}
@@ -57,10 +59,15 @@
                                 {{ $post->updated_at->diffForHumans() }}
                             </td>
                             <td class="px-2 py-4 flex space-x-2 m-auto">
-                                <a href="#">
-                                    <i class="fas fa-lg fa-trash text-red"></i>
-                                </a>
-                                <a href="#">
+                                <form action="{{ route('admin.post.destroy', $post->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        onclick="return confirm('Are you sure you want to delete this?');">
+                                        <i class="fas fa-lg fa-trash text-red"></i>
+                                    </button>
+                                </form>
+                                <a href="{{ route('admin.post.edit', $post->id) }}">
                                     <i class="fa-regular fa-lg fa-pen-to-square text-blue "></i>
                                 </a>
                             </td>

@@ -151,7 +151,7 @@
                     </div>
                     <div class="flex flex-col px-5 pb-4 space-y-2">
                         @foreach ($sidebar_posts->take(6) as $post)
-                            <a href="{{ route('register') }}"
+                            <a href="{{ route('posts.show', $post->id) }}"
                                 class=" bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
                                 {{ $post->title }}
                             </a>

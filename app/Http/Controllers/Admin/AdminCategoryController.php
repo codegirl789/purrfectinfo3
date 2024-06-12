@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Status;
+use App\Models\SuperCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
@@ -13,8 +16,7 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        // dd(Category::where('id', 1)->first()->super_id);
+        $categories = Category::latest()->get();
         return view('admin.category.index', compact('categories'));
     }
 
@@ -23,7 +25,8 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $super_categories = SuperCategory::latest()->get();
+        return view('admin.category.create', compact('super_categories'));
     }
 
     /**
@@ -31,7 +34,23 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $originalfilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = $originalfilename . '_' .  time() . '.' . $extenstion;
+            $file->move('Categories/', $filename);
+            $image = 'Categories/' . $filename;
+            Category::create(array_merge($request->except('image'), ['image' => $image]));
+
+            toastr()->success('Category Added Successfully!');
+            return redirect()->route('admin.category.index');
+        }
+
+        Category::create($request->all());
+
+        toastr()->success('Category Added Successfully!');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -39,7 +58,8 @@ class AdminCategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.category.show', compact('category'));
     }
 
     /**
@@ -47,7 +67,10 @@ class AdminCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $super_categories = SuperCategory::latest()->get();
+
+        return view('admin.category.edit', compact('category', 'super_categories'));
     }
 
     /**
@@ -55,7 +78,23 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $originalfilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = $originalfilename . '_' .  time() . '.' . $extenstion;
+            $file->move('Categories/', $filename);
+            $image = 'Categories/' . $filename;
+            $category->image = $image;
+            $category->save();
+        }
+
+        $category->update($request->except('image'));
+
+        toastr()->success('Category Updated Successfully!');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -63,6 +102,10 @@ class AdminCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        toastr()->success('category deleted successfully!');
+        return redirect()->route('admin.category.index');
     }
 }

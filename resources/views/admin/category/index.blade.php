@@ -1,9 +1,9 @@
 <x-admin-layout>
-    <div class="bg-white w-11/12 mx-auto p-4 rounded-lg shadow">
-        <div class="flex justify-between items-center mb-2">
+    <div class="bg-white p-2 rounded-lg shadow">
+        <div class="flex justify-between items-center my-2">
             <x-admin.heading>All categories</x-admin.heading>
             <a href="{{ route('admin.category.create') }}"
-                class="py-2 px-4 text-center bg-blue text-white w-full basis-52 rounded-lg shadow">
+                class="py-2 px-4 text-center bg-blue hover:bg-blue-hover text-white w-full basis-52 rounded-lg shadow">
                 Create New Category
             </a>
         </div>
@@ -45,28 +45,32 @@
                                     class="w-14 h-14 object-cover rounded-full">
                             </th>
                             <td class="p-2">
-                                {{ $category->name }}
+                                <a href="{{ route('admin.category.show', $category->id) }}">
+                                    {{ $category->name }}
+                                </a>
                             </td>
                             <td class="p-2 line-clamp-3">
-                                {{ $category->description }}
+                                <a href="{{ route('admin.category.show', $category->id) }}">
+                                    {{ $category->description }}
+                                </a>
                             </td>
                             <td class="p-2">
                                 {{ $category->SuperCategory->name }}
-                                {{-- @if ($category->super_id == 1)
-                                    Animal
-                                @else
-                                    Bird
-                                @endif --}}
                             </td>
                             <td class="p-2">
                                 {{ $category->updated_at->diffForHumans() }}
                             </td>
-                            <td class="p-2 flex space-x-2 m-auto">
-                                <a href="#">
-                                    <i class="fas fa-lg fa-trash text-red"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa-regular fa-lg fa-pen-to-square text-blue "></i>
+                            <td class="p-2 flex space-x-8 m-auto">
+                                <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        onclick="return confirm('Are you sure you want to delete this?');">
+                                        <i class="fas fa-lg fa-trash text-red"></i>
+                                    </button>
+                                </form>
+                                <a href="{{ route('admin.category.edit', $category->id) }}">
+                                    <i class="fa-regular fa-lg fa-pen-to-square text-blue  "></i>
                                 </a>
                             </td>
                         </tr>

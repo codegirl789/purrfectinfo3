@@ -3,32 +3,52 @@
         <div class="flex justify-between items-center">
             <x-admin.heading>Create New Post</x-admin.heading>
             <a href="{{ route('admin.post.index') }}"
-                class="py-2 px-4 text-center bg-blue text-white w-full basis-36 rounded-lg shadow">
+                class="py-2 px-4 text-center bg-blue hover:bg-blue-hover text-white w-full basis-36 rounded-lg shadow">
                 All Posts
             </a>
         </div>
 
-        <div class="p-4">
-            <form action="#">
+        <div class="py-4 px-0">
+            <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="text" placeholder="Title"
+                <input type="text" placeholder="Title" name="title"
                     class="py-2 px-4 my-2 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
                 <div class="flex justify-between items-start space-x-2">
+                    <select name="super_category_id"
+                        class="py-2 px-4  bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
+                        <option value="#">Select Super Category</option>
+                        @foreach ($super_categories as $super_category)
+                            <option value="{{ $super_category->id }}">{{ $super_category->name }}</option>
+                        @endforeach
+                    </select>
                     <select name="category_id"
-                        class="py-2 px-4 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
+                        class="py-2 px-4  bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
                         <option value="#">Select category</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    <select name="sub_category_id"
+                        class="py-2 px-4 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
+                        <option value="#">Select sub_category</option>
+                        @foreach ($sub_categories as $sub_category)
+                            <option value="{{ $sub_category->id }}">{{ $sub_category->name }}</option>
+                        @endforeach
                     </select>
                     <select name="status_id"
                         class="py-2 px-4 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
                         <option value="#">Select status</option>
+                        @foreach ($statuses as $status)
+                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                        @endforeach
                     </select>
-                    <input type="file" placeholder="Title"
-                        class="py-2 px-4 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
                 </div>
+                <input type="file" name="image"
+                    class="py-2 px-4 mt-2 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
                 <textarea name="content" rows="3" placeholder="Content"
                     class="py-2 px-4 my-2 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black"></textarea>
                 <button type="submit"
-                    class="py-2 px-4 my-2 bg-blue text-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">Create
+                    class="py-2 px-4 my-2 bg-blue hover:bg-blue-hover text-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">Create
                     Post</button>
             </form>
         </div>

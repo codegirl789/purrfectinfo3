@@ -15,4 +15,9 @@ class SuperCategory extends Model
     {
         return $this->hasMany(Category::class, 'categories');
     }
+
+    public function Posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

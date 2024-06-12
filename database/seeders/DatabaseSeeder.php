@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostUser;
 use App\Models\Status;
 use App\Models\SubCategory;
 use App\Models\SuperCategory;
@@ -139,10 +140,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
-        Status::factory()->create(['name' => 'Considering', 'classes' => 'bg-purple text-white']);
-        Status::factory()->create(['name' => 'In Progress', 'classes' => 'bg-yellow text-white']);
-        Status::factory()->create(['name' => 'Implemented', 'classes' => 'bg-green text-white']);
-        Status::factory()->create(['name' => 'Closed', 'classes' => 'bg-red text-white']);
+        Status::factory()->create(['name' => 'Considering', 'classes' => 'bg-purple-500 text-white']);
+        Status::factory()->create(['name' => 'In Progress', 'classes' => 'bg-yellow-500 text-white']);
+        Status::factory()->create(['name' => 'Implemented', 'classes' => 'bg-green-500 text-white']);
+        Status::factory()->create(['name' => 'Closed', 'classes' => 'bg-red-500 text-white']);
 
         Post::factory(150)->create();
 
@@ -153,5 +154,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'lk@gmail.com',
             'password' => Hash::make('password')
         ]);
+
+        PostUser::factory(30)->create();
     }
 }

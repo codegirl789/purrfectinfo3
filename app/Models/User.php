@@ -62,4 +62,9 @@ class User extends Authenticatable
             . $integerToUse
             . '.png';
     }
+
+    public function Posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }

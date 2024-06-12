@@ -1,19 +1,23 @@
 <div class="post-and-buttons container">
     <div class="post-container bg-white rounded-xl mt-4">
         <div class="flex flex-col md:flex-row flex-1 md:px-4 px-2 md:pr-0 md:py-6 py-3">
-            <div class="flex-none mx-auto">
+
+            {{-- <div class="flex-none mx-auto">
                 <a href="#">
                     <img src="https://i.pravatar.cc/60" alt="avatar" class="w-10 h-10 rounded-full">
                 </a>
-            </div>
+            </div> --}}
             <div class="mx-4">
+
+                <a href="#">
+                    <img src="https://i.pravatar.cc/800" alt="avatar" class="w-full h-96 object-cover rounded mb-2">
+                </a>
+
                 <h4 class="text-2xl font-semibold flex justify-between items-center">
-                    <a href="#" class="hover:underline">{{ $post->title }}</a>
+                    <a href="#" class="hover:underline">{{ ucfirst($post->title) }}</a>
                 </h4>
 
-                <div class="text-xs pt-2">{{ $post->created_at->diffForHumans() }}</div>
-
-                <div class="text-gray-600 mt-3 text-base">
+                <div class="text-gray-600 mt-2 text-base">
                     {{ $post->content }}
                     <br>
                     <br>
@@ -25,57 +29,20 @@
                     rerum numquam. Inventore ullam perferendis quos, alias quas corporis cum iste mollitia a.
 
                     <br>
-                    <br>
-
-
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ratione est magni eum omnis?
-                    Accusamus fuga facere pariatur natus neque incidunt ab beatae assumenda suscipit dolor quis ipsa
-                    nihil nisi id dolore vero, quaerat ea. Doloremque, qui quisquam distinctio ad ex ducimus at
-                    similique debitis vitae eius enim soluta alias cum asperiores dolor, animi laborum earum facilis
-                    blanditiis quidem magni aspernatur omnis ut eveniet! Tenetur dolore voluptas sit reprehenderit fuga
-                    cumque similique! At totam eos odio! Cum harum laborum placeat a culpa saepe nihil necessitatibus.
-                    Adipisci enim autem corrupti aperiam dolorem exercitationem possimus? Cumque architecto repellat
-                    dolor adipisci ullam dolorem atque porro id natus exercitationem nihil totam ut impedit aperiam,
-                    aliquid, beatae voluptatibus? Mollitia quos quidem soluta, laudantium, assumenda culpa laboriosam,
-                    nisi ex eaque sunt ipsa cupiditate molestiae deserunt provident? Accusamus quis velit voluptas
-                    expedita? Quis expedita porro quo saepe nobis ratione et asperiores, laudantium iste corrupti
-                    <br>
-                    <br>
-
-
-                    consequatur odio ipsum impedit sed amet alias ab natus, numquam sequi maiores quia reiciendis id
-                    aperiam rerum. Dolore quasi pariatur architecto quae, suscipit non nobis voluptas amet recusandae
-                    fugiat quas, officia exercitationem voluptate laboriosam est eaque molestias repellat? Nemo
-                    consequatur incidunt aliquid alias, quasi cumque adipisci blanditiis consectetur quas voluptatibus
-                    reprehenderit placeat quia?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sed ipsa ut aperiam, ullam
-                    expedita. Sunt alias vel, saepe quas perspiciatis corporis accusamus corrupti maxime, laudantium aut
-                    nulla voluptate tempora eaque! Ut praesentium laudantium corporis accusantium saepe, nobis quos
-                    assumenda aliquam tempore consequatur architecto eaque labore voluptates illum beatae aperiam
-                    mollitia porro unde laboriosam cum debitis molestiae? Velit explicabo sapiente facilis voluptates,
-                    et quod porro vero repudiandae modi vitae expedita dolores repellendus voluptate natus aliquid ipsam
-                    voluptas unde deserunt ad assumenda. Temporibus ad nam dolore placeat. Minima quisquam quos placeat,
-                    <br>
-                    <br>
-
-
-                    libero, sint exercitationem impedit ea culpa quas inventore alias. Quas atque nostrum fugiat
-                    voluptates consequatur ut aliquam cum fugit repellendus aut et consequuntur, nam molestiae vero ea
-                    ipsum voluptatibus culpa nobis rem quo sunt, illo ratione. Nihil doloremque quos doloribus
-                    distinctio nisi esse, pariatur possimus facilis iure quidem dolore deserunt exercitationem suscipit
-                    ab animi, atque quis nostrum incidunt accusamus eveniet.
                 </div>
 
                 <div class="flex flex-col md:flex-row md:items-center justify-between md:mt-6 mt-2">
                     <div
                         class="flex text-center items-center md:text-xs text-xxs text-gray-400 font-semibold space-x-1">
                         <div class="hidden md:block font-semibold text-gray-800">
-                            {{ $post->name }}
+                            {{ $post->Category->name }}
                         </div>
                         <div class="hidden md:block">&bull;</div>
                         <div>{{ $post->SubCategory->name }}</div>
                         <div>&bull;</div>
-                        <div class="text-gray-900">3 Comments</div>
+                        <div class="text-gray-500">3 Comments</div>
+                        <div>&bull;</div>
+                        <div class="text-gray-500 text-xs">{{ $post->created_at->diffForHumans() }}</div>
                     </div>
 
 
@@ -91,7 +58,7 @@
                                     {{ $votesCount }}
                                 </div>
                                 <div class="text-xxs">
-                                    votes
+                                    likes
                                 </div>
                             </div>
                             <button
@@ -256,12 +223,12 @@
             <div class="bg-white text-center font-semibold rounded-xl px-3 py-1">
                 <div class="text-xl leading-snug @if ($hasVoted) text-blue-500 @endif ">
                     {{ $votesCount }}</div>
-                <div class="text-xxs text-gray-400 leading-none">Votes</div>
+                <div class="text-xxs text-gray-400 leading-none">likes</div>
             </div>
             <div class="">
                 <button type="button"
                     class="{{ $hasVoted ? 'bg-blue-500 text-white' : 'bg-gray-200' }} w-32 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
-                    {{ $hasVoted ? 'Voted' : 'Vote' }}
+                    {{ $hasVoted ? 'Liked' : 'Like' }}
                 </button>
             </div>
         </div>
