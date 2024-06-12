@@ -87,13 +87,23 @@
                             </button>
                         </div> --}}
                         <div class="flex space-x-4 items-center">
-                            <i class="fa-regular fa-xl fa-heart"></i>
-                            <i class="fa-regular fa-lg fa-bookmark"></i>
+                            <div>
+                                <i class="fa-regular fa-xl fa-heart"></i>
+                                <span class="text-lg text-gray-500">
+                                    {{ $post->Users->count() }}
+                                </span>
+                            </div>
+                            <div class="">
+                                <i class="fa-regular fa-lg fa-bookmark"></i>
+                                <span class="text-lg text-gray-500">
+                                    7
+                                </span>
+                            </div>
                         </div>
                         <div class="flex space-x-2">
 
                             <div
-                                class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->status->classes }} text-black">
+                                class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->status->classes }}">
                                 {{ $post->Category->name }}
                             </div>
                             <button @click="isOpen=!isOpen"
