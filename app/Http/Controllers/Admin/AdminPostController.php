@@ -76,9 +76,10 @@ class AdminPostController extends Controller
 
         $categories = Category::latest()->get();
         $sub_categories = SubCategory::latest()->get();
+        $super_categories = SuperCategory::latest()->get();
         $statuses = Status::latest()->get();
 
-        return view('admin.post.edit', compact('post', 'categories', 'sub_categories', 'statuses'));
+        return view('admin.post.edit', compact('post', 'categories', 'super_categories', 'sub_categories', 'statuses'));
     }
 
     /**

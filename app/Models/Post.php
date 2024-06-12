@@ -31,7 +31,7 @@ class Post extends Model
         return $this->belongsTo(Status::class);
     }
 
-    public function Users()
+    public function Likes()
     {
         return $this->belongsToMany(User::class, 'post_users');
     }

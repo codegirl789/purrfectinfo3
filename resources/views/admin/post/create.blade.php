@@ -45,6 +45,8 @@
                 </div>
                 <input type="file" name="image"
                     class="py-2 px-4 my-2 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
+                <textarea name="introduction" rows="3" placeholder="Introduction"
+                    class="py-2 px-4 mb-2 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black resize-none"></textarea>
                 <textarea name="content" rows="3" placeholder="Content" id="myeditorinstance"
                     class="py-2 px-4 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black"></textarea>
                 <button type="submit"

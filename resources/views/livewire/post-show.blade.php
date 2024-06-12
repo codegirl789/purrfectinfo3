@@ -18,15 +18,12 @@
                 <div class="text-gray-900 mt-2 text-base">
 
                     <div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus atque dolores distinctio, odit
-                        consequuntur repellendus quis necessitatibus nisi sed cumque eaque provident commodi velit quod
-                        vero dolorum, enim error qui. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil
-                        molestias, eum voluptatum nemo delectus provident iste explicabo vitae ut harum aliquid maxime
-                        cumque architecto voluptatibus tenetur neque asperiores sapiente molestiae.
+                        {{ $post->introduction }}
                     </div>
+
                     <a href="#">
                         <img src="https://i.pravatar.cc/1200" alt="avatar"
-                            class="w-full md:h-96 h-52 object-cover rounded my-2">
+                            class="w-full md:h-96 h-52 object-cover rounded my-4">
                     </a>
 
                     {!! $post->content !!}
@@ -53,7 +50,7 @@
                             <div class=" flex flex-col bg-gray-200 text-center rounded px-2 py-1 ">
                                 <div
                                     class=" h-3 font-semibold leading-none text-sm  @if ($hasVoted) text-blue-500 @endif ">
-                                    {{ $votesCount }}
+                                    {{ $post->Likes->count() }}
                                 </div>
                                 <div class="text-xxs">
                                     likes
@@ -220,7 +217,7 @@
         <div class="hidden md:flex items-center space-x-3 ml-4">
             <div class="bg-white text-center font-semibold rounded-xl px-3 py-1">
                 <div class="text-xl leading-snug @if ($hasVoted) text-blue-500 @endif ">
-                    {{ $votesCount }}</div>
+                    {{ $post->Likes->count() }}</div>
                 <div class="text-xxs text-gray-400 leading-none">likes</div>
             </div>
             <div class="">

@@ -55,7 +55,7 @@
                         kdls</a>
                 </div>
                 <a href="{{ route('posts.show', $post->id) }}" class="line-clamp-3 pt-2">
-                    {{ $post->content }}
+                    {{ $post->introduction }}
                 </a>
 
                 <div class="flex items-center justify-between pt-2">
@@ -91,7 +91,7 @@
                             <div>
                                 <i class="fa-regular fa-xl fa-heart"></i>
                                 <span class="text-lg text-gray-500">
-                                    {{ $post->Users->count() }}
+                                    {{ $post->Likes->count() }}
                                 </span>
                             </div>
                             <div class="">

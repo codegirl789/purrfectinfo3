@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('category_id')->references('id')->on('categories');
             $table->foreignId('status_id')->references('id')->on('statuses');
             $table->string('title')->unique();
+            $table->text('introduction');
             $table->text('content');
             $table->string('image')->nullable();
             $table->timestamps();

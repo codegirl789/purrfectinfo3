@@ -30,7 +30,8 @@ class PostFactory extends Factory
             'category_id' => $category->id,
             'status_id' => $status->id,
             'title' => fake()->words(8, true),
-            'content' => fake()->paragraph(300, true),
+            'introduction' => fake()->paragraph(15),
+            'content' => fake()->paragraph(100, true),
             'image' => fake()->randomElement(['images/1.png', 'images/2.png', 'images/3.png', 'images/4.png', 'images/5.png', 'images/6.png', 'images/7.png']),
         ];
     }
