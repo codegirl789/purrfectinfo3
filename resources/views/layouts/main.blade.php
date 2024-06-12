@@ -153,7 +153,7 @@
                         @foreach ($sidebar_posts->take(6) as $post)
                             <a href="{{ route('posts.show', $post->id) }}"
                                 class=" bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
-                                {{ $post->title }}
+                                {{ $post->title }} <i class="fa-solid fa-up-right-from-square"></i>
                             </a>
                         @endforeach
                     </div>

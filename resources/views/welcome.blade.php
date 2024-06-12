@@ -50,9 +50,7 @@
                             class="w-14 h-14 rounded-xl">
                     </a>
                     <a href="{{ route('posts.show', $post->id) }}"
-                        class="font-semibold text-xl basis-10/12 hover:underline">{{ ucfirst(substr($post->title, 0, 30)) }}
-                        Lorem ipsum dolor
-                        kdls</a>
+                        class="font-semibold text-xl basis-10/12 hover:underline">{{ ucfirst(substr($post->title, 0, 60)) }}...</a>
                 </div>
                 <a href="{{ route('posts.show', $post->id) }}" class="line-clamp-3 pt-2">
                     {{ $post->introduction }}

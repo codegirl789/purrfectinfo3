@@ -31,15 +31,29 @@
                 </div>
 
                 <div class="flex flex-col md:flex-row md:items-center justify-between md:mt-6 mt-2">
+
+                    <div class="flex space-x-4 items-center">
+                        <div>
+                            <i class="fa-regular fa-xl fa-heart"></i>
+                            <span class="text-lg text-gray-500">
+                                {{ $post->Likes->count() }}
+                            </span>
+                        </div>
+                        <div class="">
+                            <i class="fa-regular fa-xl fa-comment"></i>
+                            <span class="text-lg text-gray-500">
+                                {{ $post->Comments->count() }}
+                            </span>
+                        </div>
+                    </div>
+
                     <div
-                        class="flex text-center items-center md:text-xs text-xxs text-gray-500 font-semibold space-x-1">
+                        class="flex text-center items-center md:text-sm text-xxs text-gray-500 font-semibold space-x-1">
                         <div class="hidden md:block font-semibold text-gray-800">
                             {{ $post->SuperCategory->name }}
                         </div>
                         <div class="hidden md:block">&bull;</div>
                         <div>{{ $post->SubCategory->name }}</div>
-                        <div>&bull;</div>
-                        <div>{{ $post->Comments->count() }} Comments</div>
                         <div>&bull;</div>
                         <div class="text-gray-400 text-xs">{{ $post->created_at->diffForHumans() }}</div>
                     </div>

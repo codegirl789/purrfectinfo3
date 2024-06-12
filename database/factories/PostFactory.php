@@ -29,7 +29,7 @@ class PostFactory extends Factory
             'sub_category_id' => $sub_category->id,
             'category_id' => $category->id,
             'status_id' => $status->id,
-            'title' => fake()->words(8, true),
+            'title' => fake()->words(15, true),
             'introduction' => fake()->paragraph(15),
             'content' => fake()->paragraph(100, true),
             'image' => fake()->randomElement(['images/1.png', 'images/2.png', 'images/3.png', 'images/4.png', 'images/5.png', 'images/6.png', 'images/7.png']),
