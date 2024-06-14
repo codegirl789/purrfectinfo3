@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('super_category_id')->references('id')->on('super_categories');
             $table->foreignId('sub_category_id')->references('id')->on('sub_categories');
             $table->foreignId('category_id')->references('id')->on('categories');

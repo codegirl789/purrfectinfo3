@@ -94,40 +94,25 @@
     <main class="container md:w-11/12  w-11/12 gap-x-6 mx-auto flex flex-col md:flex-row md:my-4">
         <div class="md:w-1/4 mx-auto md:mx-0  w-full blue">
             <div class=" md:sticky md:top-20  md:mt-2 mt-2">
-                <div class="bg-white border-2 border-blue shadow rounded-b-lg"
-                    style="
-  border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
-    border-image-slice: 1;
-    background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
-    background-origin: border-box;
-    background-clip: content-box, border-box;
+                @guest
+                    <div class="bg-white border-2 border-blue shadow rounded-b-lg"
+                        style="
+border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
+border-image-slice: 1;
+background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
+background-origin: border-box;
+background-clip: content-box, border-box;
 ">
 
 
-                    <div class="text-center px-6 py-2 pt-6">
-                        <h3 class="font-semibold text-base">
-                            Add Post
-                        </h3>
-                        <p class="text-xs mt-4">
-                            @auth
-                                Let us know what you would like and we'll take a look over!
-                            @else
-                                Please login to create an idea.
-                            @endauth
-                        </p>
-                    </div>
-
-                    @auth
-                        {{-- <livewire:create-idea /> --}}
-                        {{-- @livewire('create-idea') --}}
-                        <div class="p-4">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptate, ullam harum at ad
-                            neque
-                            non cum cumque aspernatur officiis dolore odio, natus labore optio et. Repudiandae
-                            necessitatibus
-                            totam quam.
+                        <div class="text-center px-6 py-2 pt-6">
+                            <h3 class="font-semibold text-base">
+                                PurrfectInfo Blog
+                            </h3>
+                            <p class="text-xs mt-4">
+                                Please login to like and comment on posts.
+                            </p>
                         </div>
-                    @else
                         <div class="flex flex-col px-5 pb-4 space-y-2">
                             <a href="{{ route('login') }}"
                                 class="text-center bg-blue text-white rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
@@ -139,34 +124,37 @@
                                 Register
                             </a>
                         </div>
-                    @endauth
+                    </div>
+                @endguest
+
+                @guest
+                    <div class="bg-white  shadow rounded-lg md:mt-5 my-2">
+                    @else
+                        <div class="bg-white  shadow rounded-lg  my-2">
+                        @endguest
+                        <div class="text-center p-3">
+                            <h3 class="font-semibold text-base">
+                                Popular Posts
+                            </h3>
+                        </div>
+                        <div class="flex flex-col px-3 pb-4 space-y-2">
+                            @foreach ($sidebar_posts->take(6) as $post)
+                                <a href="{{ route('posts.show', $post->id) }}"
+                                    class=" bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
+                                    {{ $post->title }} <i class="fa-solid fa-up-right-from-square"></i>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-white  shadow rounded-lg md:mt-5 my-2" style="
-                ">
-                    <div class="text-center px-6 py-2 pt-6">
-                        <h3 class="font-semibold text-base">
-                            Popular Posts
-                        </h3>
-                    </div>
-                    <div class="flex flex-col px-5 pb-4 space-y-2">
-                        @foreach ($sidebar_posts->take(6) as $post)
-                            <a href="{{ route('posts.show', $post->id) }}"
-                                class=" bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
-                                {{ $post->title }} <i class="fa-solid fa-up-right-from-square"></i>
-                            </a>
-                        @endforeach
-                    </div>
+
+            </div>
+            <div class="md:w-3/4 w-full mt-2">
+                <div class="mt-0">
+                    {{ $slot }}
                 </div>
             </div>
-
-
-        </div>
-        <div class="md:w-3/4 w-full mt-2">
-            <div class="mt-0">
-                {{ $slot }}
-            </div>
-        </div>
     </main>
 
 

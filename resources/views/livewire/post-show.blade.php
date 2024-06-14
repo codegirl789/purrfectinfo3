@@ -2,15 +2,7 @@
     <div class="post-container bg-white rounded-xl mt-4">
         <div class="flex flex-col md:flex-row flex-1  p-4 ">
 
-            {{-- <div class="flex-none mx-auto">
-                <a href="#">
-                    <img src="https://i.pravatar.cc/60" alt="avatar" class="w-10 h-10 rounded-full">
-                </a>
-            </div> --}}
             <div>
-
-
-
                 <h4 class="text-2xl font-semibold flex justify-between items-center">
                     <a href="#" class="hover:underline">{{ ucfirst($post->title) }}</a>
                 </h4>
@@ -32,7 +24,7 @@
 
                 <div class="flex flex-col md:flex-row md:items-center justify-between md:mt-6 mt-2">
 
-                    @auth
+                    <div class="flex flex-col">
                         <div class="flex space-x-4 items-center">
                             <div>
                                 <i class="fa-regular fa-xl fa-heart"></i>
@@ -46,26 +38,12 @@
                                     {{ $post->Comments->count() }}
                                 </span>
                             </div>
+                            @guest
+                                <p class="text-xs text-gray-500">login to like and comment</p>
+                            @endguest
+
                         </div>
-                    @else
-                        <div class="flex flex-col">
-                            <div class="flex space-x-4 items-center text-gray-500">
-                                <div>
-                                    <i class="fa-regular fa-xl fa-heart"></i>
-                                    <span class="text-lg text-gray-500">
-                                        {{ $post->Likes->count() }}
-                                    </span>
-                                </div>
-                                <div class="">
-                                    <i class="fa-regular fa-xl fa-comment"></i>
-                                    <span class="text-lg text-gray-500">
-                                        {{ $post->Comments->count() }}
-                                    </span>
-                                </div>
-                            </div>
-                            <p class="text-xs">please login to like and comment</p>
-                        </div>
-                    @endauth
+                    </div>
 
                     <div
                         class="flex text-center items-center md:text-sm text-xxs text-gray-500 font-semibold space-x-1">

@@ -39,12 +39,12 @@
                 </thead>
                 <tbody>
                     @foreach ($categories as $category)
-                        <tr class="bg-white hover:bg-gray-50 cursor-pointer border-b ">
+                        <tr class="bg-bg-white hover:bg-gray-50 cursor-pointer border-b ">
                             <th scope="row" class="p-2 font-medium text-gray-900 whitespace-nowrap ">
                                 <img src="{{ asset($category->image) }}" alt="image"
                                     class="w-14 h-14 object-cover rounded-full">
                             </th>
-                            <td class="p-2">
+                            <td class="p-2 {{ $category->color }} rounded-lg">
                                 <a href="{{ route('admin.category.show', $category->id) }}">
                                     {{ $category->name }}
                                 </a>

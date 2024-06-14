@@ -40,4 +40,15 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function isLikedByUser(?User $user)
+    {
+        if (!$user) {
+            return false;
+        }
+
+        return Post::where('user_id', $user->id)
+            ->where('id', $this->id)
+            ->exists();
+    }
 }

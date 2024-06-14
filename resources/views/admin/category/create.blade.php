@@ -21,6 +21,14 @@
                             <option value="{{ $super->id }}">{{ $super->name }}</option>
                         @endforeach
                     </select>
+                    <select name="color"
+                        class="py-2 px-4 bg-white w-full outline-none border-none rounded-lg shadow text-base placeholder:text-gray-700">
+                        <option>Select Color</option>
+                        @foreach ($colors as $color)
+                            <option value="{{ $color->id }}" class="{{ $color->classes }}">{{ $color->name }}
+                            </option>
+                        @endforeach
+                    </select>
                     <input type="file" name="image"
                         class="py-2 px-4 bg-white w-full outline-none border-none rounded-lg shadow text-base placeholder:text-gray-700">
                 </div>

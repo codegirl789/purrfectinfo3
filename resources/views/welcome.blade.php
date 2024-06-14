@@ -41,9 +41,6 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-0">
         @forelse ($posts as $post)
             <div class="rounded-2xl shadow hover:shadow-card cursor-pointer bg-white p-3">
-                {{-- <a href="{{ route('posts.show', $post->id) }}" class="font-semibold text-2xl hover:underline">
-                    {{ ucfirst($post->title) }}</a> --}}
-
                 <div class="flex items-center justify-center space-x-2">
                     <a href="{{ route('posts.show', $post->id) }}" class="basis-13">
                         <img src="{{ asset($post->image) }}" alt="avatar" class="w-14 h-14 rounded-xl object-cover">
@@ -69,65 +66,38 @@
                 <div class=" mt-4">
 
                     <div x-data="{ isOpen: false }" class="flex justify-between items-center md:space-x-2 mt-2 md:mt-0">
-                        {{-- <div class=" flex">
-                            <div class=" flex flex-col bg-gray-200 text-center rounded-l-3xl px-4 pr-6 py-1 ">
-                                <div
-                                    class=" h-3 font-semibold leading-none text-sm  @if ($hasVoted) text-blue-500 @endif ">
-                                    {{ $votesCount }}
+
+                        <div class="flex flex-col">
+                            <div class="flex space-x-4 items-center">
+                                <div>
+                                    @if ($post->id % 2 != 0)
+                                        <i class="fa-solid text-red fa-xl fa-heart"></i>
+                                    @else
+                                        <i class="fa-regular fa-xl fa-heart"></i>
+                                    @endif
+                                    <span class="text-lg text-gray-500">
+                                        {{ $post->Likes->count() }}
+                                    </span>
                                 </div>
-                                <div class="text-xxs">
-                                    votes
+                                <div class="">
+                                    <i class="fa-regular fa-xl fa-comment"></i>
+                                    <span class="text-lg text-gray-500">
+                                        {{ $post->Comments->count() }}
+                                    </span>
                                 </div>
-                            </div>
-                            <button
-                                class="{{ $hasVoted ? 'bg-blue' : 'bg-gray-500' }}  text-white w-16 rounded-3xl text-center -ml-4">
-                                {{ $hasVoted ? 'voted' : 'vote' }}
-                            </button>
-                        </div> --}}
-                        <div class="flex space-x-4 items-center">
-                            <div>
-                                <i class="fa-regular fa-xl fa-heart"></i>
-                                <span class="text-lg text-gray-500">
-                                    {{ $post->Likes->count() }}
-                                </span>
-                            </div>
-                            <div class="">
-                                <i class="fa-regular fa-xl fa-comment"></i>
-                                <span class="text-lg text-gray-500">
-                                    {{ $post->Comments->count() }}
-                                </span>
+                                @guest
+                                    <p class="text-xs text-gray-500">login to like and comment</p>
+                                @endguest
+
                             </div>
                         </div>
-                        <div class="flex space-x-2">
 
-                            <div
-                                class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->status->classes }}">
-                                {{ $post->Category->name }}
-                            </div>
-                            <button @click="isOpen=!isOpen"
-                                class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in py-2 px-3">
-                                <svg fill="currentColor" width="24" height="6">
-                                    <path
-                                        d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z"
-                                        style="color: rgba(163, 163, 163, .5)">
-                                </svg>
-                                <ul x-cloak x-show="isOpen" @click.away="isOpen=false"
-                                    x-transition.open.top.left.duration.500ms @keydown.escape.window="isOpen=false"
-                                    class=" absolute w-44 text-left font-semibold bg-white shadow-dialog rounded-xl py-3 md:ml-8 right-0 md:left-0 z-20 mt-4 md:mt-0">
-                                    <li><a href="#"
-                                            class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">Mark
-                                            as Spam</a></li>
-                                    <li><a href="#"
-                                            class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">Delete
-                                            Post</a></li>
-                                </ul>
-                            </button>
+                        <div
+                            class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->Category->color }} text-white">
+                            {{ $post->Category->name }}
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         @empty
             <p class="w-full text-center py-2 rounded-xl shadow bg-indigo-500 text-white">No Posts Found</p>

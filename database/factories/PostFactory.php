@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Status;
 use App\Models\SubCategory;
 use App\Models\SuperCategory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,11 +21,13 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        $user = User::all()->random();
         $status = Status::all()->random();
         $category = Category::all()->random();
         $super_category = SuperCategory::all()->random();
         $sub_category = SubCategory::all()->random();
         return [
+            'user_id' => $user->id,
             'super_category_id' => $super_category->id,
             'sub_category_id' => $sub_category->id,
             'category_id' => $category->id,

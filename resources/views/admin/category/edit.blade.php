@@ -20,7 +20,18 @@
                         class="py-2 px-4 bg-white w-full outline-none border-none rounded-lg shadow text-base placeholder:text-gray-700">
                         <option>Select Parent Category</option>
                         @foreach ($super_categories as $super)
-                            <option value="{{ $super->id }}">{{ $super->name }}</option>
+                            <option value="{{ $super->id }}"
+                                {{ $super->id === $category->SuperCategory->id ? 'selected' : '' }}>{{ $super->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <select name="color"
+                        class="py-2 px-4 bg-white w-full outline-none border-none rounded-lg shadow text-base placeholder:text-gray-700">
+                        <option>Select Color</option>
+                        @foreach ($colors as $color)
+                            <option value="{{ $color->classes }}" class="{{ $color->classes }}"
+                                {{ $color->classes === $category->color ? 'selected' : '' }}>{{ $color->name }}
+                            </option>
                         @endforeach
                     </select>
                     <input type="file" name="image"

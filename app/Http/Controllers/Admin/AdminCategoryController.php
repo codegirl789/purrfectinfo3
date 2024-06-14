@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Status;
 use App\Models\SuperCategory;
 use Carbon\Carbon;
@@ -26,7 +27,8 @@ class AdminCategoryController extends Controller
     public function create()
     {
         $super_categories = SuperCategory::latest()->get();
-        return view('admin.category.create', compact('super_categories'));
+        $colors = Color::latest()->get();
+        return view('admin.category.create', compact('super_categories', 'colors'));
     }
 
     /**
@@ -68,9 +70,10 @@ class AdminCategoryController extends Controller
     public function edit(string $id)
     {
         $category = Category::findOrFail($id);
+        $colors = Color::latest()->get();
         $super_categories = SuperCategory::latest()->get();
 
-        return view('admin.category.edit', compact('category', 'super_categories'));
+        return view('admin.category.edit', compact('category', 'super_categories', 'colors'));
     }
 
     /**

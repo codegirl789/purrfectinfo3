@@ -11,6 +11,7 @@
         <div class="py-4 px-0">
             <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                 <input type="text" placeholder="Title" name="title"
                     class="py-2 px-4 my-2 bg-white w-full outline-none border-none rounded-lg shadow placeholder:text-black">
                 <div class="flex justify-between items-start space-x-2 mt-1">
