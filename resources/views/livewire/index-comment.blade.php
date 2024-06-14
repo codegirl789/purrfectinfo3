@@ -31,7 +31,6 @@
                                 <div>&bull;</div>
                                 <div>{{ $comment->created_at->diffForHumans() }}</div>
                             </div>
-
                             <div x-data="{ commentOpen1: false }" class="flex items-center space-x-2">
                                 <button @click="commentOpen1 = !commentOpen1"
                                     class="relative bg-gray-100 mt-3 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in py-2 px-3 ">
@@ -43,12 +42,19 @@
                                     <ul x-cloaked x-show="commentOpen1" x-transition.oen.top.right.duration.500ms
                                         @click.away="commentOpen1=false" @keydown.escape.window="commentOpen1=false"
                                         class="absolute z-10 shadow-dialog w-44 font-semibold bg-white  rounded-xl text-right py-3 md:ml-8 right-0 md:right-0 mt-4 md:mt-0">
-                                        <a href="#"
-                                            class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark
-                                            As Spam</a>
-                                        <a href="#"
-                                            class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Delete
-                                            Comment</a>
+
+                                        @if ($comment->User->id == auth()->user()->id)
+                                            <a href="#"
+                                                class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark
+                                                As Spam</a>
+                                            <a href="#"
+                                                class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Delete
+                                                Comment</a>
+                                        @else
+                                            <a href="#"
+                                                class="hover:bg-gray-200 block transition duration-150 ease-in px-5 py-3">Mark
+                                                As Spam</a>
+                                        @endif
                                     </ul>
                                 </button>
                             </div>

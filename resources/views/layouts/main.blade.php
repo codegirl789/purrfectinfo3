@@ -34,7 +34,7 @@
             </a>
 
             <div class="flex items-center mt-2 md:mt-0">
-                <a href="#"
+                <a href="{{ route('homepage') }}"
                     class="ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Home</a>
                 <a href="#"
