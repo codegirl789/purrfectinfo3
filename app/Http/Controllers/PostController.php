@@ -16,8 +16,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::where('id', $id)->first();
-        $votesCount = Post::count();
 
-        return view('frontend.post.show', compact('post', 'votesCount'));
+        return view('frontend.post.show', compact('post'));
     }
 }

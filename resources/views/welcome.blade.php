@@ -39,15 +39,14 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-0">
-        @foreach ($posts as $post)
+        @forelse ($posts as $post)
             <div class="rounded-2xl shadow hover:shadow-card cursor-pointer bg-white p-3">
                 {{-- <a href="{{ route('posts.show', $post->id) }}" class="font-semibold text-2xl hover:underline">
                     {{ ucfirst($post->title) }}</a> --}}
 
                 <div class="flex items-center justify-center space-x-2">
                     <a href="{{ route('posts.show', $post->id) }}" class="basis-13">
-                        <img src="https://i.pravatar.cc/300?v={{ $post->id }}" alt="avatar"
-                            class="w-14 h-14 rounded-xl">
+                        <img src="{{ asset($post->image) }}" alt="avatar" class="w-14 h-14 rounded-xl object-cover">
                     </a>
                     <a href="{{ route('posts.show', $post->id) }}"
                         class="font-semibold text-xl basis-10/12 hover:underline">{{ ucfirst(substr($post->title, 0, 60)) }}...</a>
@@ -58,9 +57,9 @@
 
                 <div class="flex items-center justify-between pt-2">
                     <div class="flex space-x-1 items-center">
-                        <span>{{ $post->SubCategory->name }}</span>
+                        <span>{{ $post->SuperCategory->name }}</span>
                         <div class=""> &bull; </div>
-                        <span class="text-gray-500 text-sm"> {{ $post->SuperCategory->name }}</span>
+                        <span class="text-gray-500 text-sm"> {{ $post->SubCategory->name }}</span>
                     </div>
                     <div class="text-gray-500 text-sm">
                         {{ $post->created_at->diffForHumans() }}
@@ -130,7 +129,9 @@
                 </div>
 
             </div>
-        @endforeach
+        @empty
+            <p class="w-full text-center py-2 rounded-xl shadow bg-indigo-500 text-white">No Posts Found</p>
+        @endforelse
     </div>
 
     <div class=" pt-4">

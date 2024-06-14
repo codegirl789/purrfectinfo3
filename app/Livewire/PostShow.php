@@ -8,13 +8,12 @@ use Livewire\Component;
 class PostShow extends Component
 {
     public $post;
-    public $votesCount;
+    // public $votesCount;
     public $hasVoted;
 
-    public function mount(Post $post, $votesCount)
+    public function mount(Post $post)
     {
         $this->post = $post;
-        $this->votesCount = $votesCount;
         $this->hasVoted = true;
     }
 
