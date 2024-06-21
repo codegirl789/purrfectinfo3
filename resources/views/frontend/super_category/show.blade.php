@@ -21,7 +21,7 @@
                 (<span class="text-base font-semibold">{{ $super_category->Posts->count() }}</span>
                 Posts in this category)
             </p>
-            <p class="text-base line-clamp-6">
+            <p class="text-base pt-2 line-clamp-6">
                 {{ $super_category->description }}
             </p>
         </div>
@@ -45,7 +45,9 @@
                 @foreach ($posts as $post)
                     <div class="card rounded-lg shadow bg-white">
                         <div class="image">
-                            <img src="{{ asset($post->image) }}" alt="post image" class="rounded-t-lg object-cover">
+                            <a href="{{ route('posts.show', $post->id) }}">
+                                <img src="{{ asset($post->image) }}" alt="post image" class="rounded-t-lg object-cover">
+                            </a>
                         </div>
                         <div class="content p-2">
                             <div class="flex justify-between items-center pb-2">
@@ -55,7 +57,8 @@
                                 </a>
                                 <span class="text-gray-500 text-xs">{{ $post->created_at->diffForHumans() }}</span>
                             </div>
-                            <h3 class="text-lg font-semibold hover:underline">{{ $post->title }}</h3>
+                            <a href="{{ route('posts.show', $post->id) }}"
+                                class="text-lg font-semibold hover:underline">{{ $post->title }}</a>
                         </div>
                     </div>
                 @endforeach

@@ -12,7 +12,10 @@
             @foreach ($categories as $category)
                 <div class="card rounded-lg shadow bg-white">
                     <div class="image">
-                        <img src="{{ asset($category->image) }}" alt="category image" class="rounded-t-lg object-cover">
+                        <a href="{{ route('category.show', $category->id) }}">
+                            <img src="{{ asset($category->image) }}" alt="category image"
+                                class="rounded-t-lg object-cover">
+                        </a>
                     </div>
                     <div class="content p-2">
                         <div class="flex justify-between items-center pb-2">
@@ -22,7 +25,9 @@
                             </a>
                             <span class="text-gray-500 text-xs">{{ $category->created_at->diffForHumans() }}</span>
                         </div>
-                        <h3 class="text-lg">{{ $category->description }}</h3>
+                        <a href="{{ route('category.show', $category->id) }}" class="text-lg">
+                            {{ $category->description }}
+                        </a>
                     </div>
                 </div>
             @endforeach

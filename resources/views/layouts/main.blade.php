@@ -33,26 +33,25 @@
                 PURRFECTINFO
             </a>
 
-            <div class="w-3/5 mx-auto flex items-center mt-2 md:mt-0">
+            <div class="w-full lg:w-3/5 mx-auto flex items-center mt-2 md:mt-0">
                 <a href="{{ route('homepage') }}"
-                    class="basis-1/12 ml-4  font-semibold text-blue-hover focus:outline focus:outline-2
+                    class="basis-16 mx-2 lg:mx-0 text-center  font-semibold text-blue-hover focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Home</a>
                 <a href="{{ route('super.show', 1) }}"
-                    class="basis-1/12 ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
+                    class="basis-16 mx-2 lg:mx-0 text-center font-semibold text-gray-600 focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Animals</a>
                 <a href="{{ route('super.show', 2) }}"
-                    class="basis-1/12 ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
+                    class="basis-16 mx-2 lg:mx-0 text-center font-semibold text-gray-600 focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Birds</a>
                 <a href="{{ route('category.index') }}"
-                    class="basis-1/12 ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
+                    class="basis-20 mr-2 lg:mx-0 text-center font-semibold text-gray-600 focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Categories</a>
                 <a href="{{ route('contact.create') }}"
-                    class="basis-44 text-center ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
+                    class="basis-20 ml-2 lg:mx-2 text-center font-semibold text-gray-600 focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Contact
                     Us</a>
 
-                <input type="text" placeholder="Find an post" wire:model="search_query"
-                    class="ml-4 rounded-xl w-full px-4 py-2 bg-slate-50 shadow-input border-none placeholder-gray-900">
+                <livewire:search />
             </div>
 
             <div class="flex items-center mt-2 md:mt-0">

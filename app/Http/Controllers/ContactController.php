@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -13,6 +14,16 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            ['name' => 'required'],
+            ['email' => 'required|email'],
+            ['message' => 'string|required|max:1000'],
+        ]);
+
+        Contact::create($request->all());
+
+        toastr()->success('Message Sent Successfully!');
+
+        return redirect()->back()->with('Message Sent Successfully!');
     }
 }

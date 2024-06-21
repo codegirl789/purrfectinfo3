@@ -11,15 +11,27 @@
         </div>
     </div>
 
-    <div class="w-1/2 mx-auto bg-white p-4 rounded-lg shadow">
+    <div class="">
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div>{{ $error }}</div>
+            @endforeach
+        @endif
+    </div>
+
+    <div class="w-3/4 mx-auto bg-white p-4 rounded-lg shadow">
         <h1 class="text-2xl font-semibold text-center mb-2">Contact Us</h1>
-        <form action="#">
-            <input type="text" placeholder="Name"
+        <form action="{{ route('contact.store') }}" method="POST">
+            @csrf
+            <input type="text" placeholder="Name" name="name"
                 class="outline-none border-none shadow-input rounded-xl w-full my-1 p-2 focus:ring-blue">
-            <input type="email" placeholder="Email"
+
+            <input type="email" placeholder="Email" name="email"
                 class="outline-none border-none shadow-input rounded-xl w-full my-1 p-2 focus:ring-blue">
-            <textarea name="message" rows="3" placeholder="Message"
+
+            <textarea name="message" rows="3" placeholder="Message" name="message"
                 class="outline-none border-none shadow-input rounded-xl w-full my-1 p-2 focus:ring-blue resize-none"></textarea>
+
             <button type="submit"
                 class="outline-none border-none shadow bg-blue hover:bg-blue-hover text-white rounded-xl w-full my-1 p-2">Send
                 Message</button>
