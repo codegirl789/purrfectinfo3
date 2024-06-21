@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminStatusController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
@@ -17,11 +18,12 @@ Route::get('/', function () {
     return view('welcome', compact('posts'));
 })->name('homepage');
 
-Route::get('/super', [SuperCategoryController::class, 'index'])->name('super.index');
-Route::get('/sub', [SubCategoryController::class, 'index'])->name('sub.index');
-Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/super/{id}', [SuperCategoryController::class, 'show'])->name('super.show');
+Route::get('/all/categories', [CategoryController::class, 'index'])->name('category.index');
+Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category.show');
 Route::get('/post/{id}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
+Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

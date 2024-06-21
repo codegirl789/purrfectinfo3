@@ -37,16 +37,16 @@
                 <a href="{{ route('homepage') }}"
                     class="basis-1/12 ml-4  font-semibold text-blue-hover focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Home</a>
-                <a href="#"
+                <a href="{{ route('super.show', 1) }}"
                     class="basis-1/12 ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Animals</a>
-                <a href="#"
+                <a href="{{ route('super.show', 2) }}"
                     class="basis-1/12 ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Birds</a>
-                <a href="#"
+                <a href="{{ route('category.index') }}"
                     class="basis-1/12 ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
-                    focus:rounded-sm focus:outline-blue-500">Category</a>
-                <a href="#"
+                    focus:rounded-sm focus:outline-blue-500">Categories</a>
+                <a href="{{ route('contact.create') }}"
                     class="basis-44 text-center ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Contact
                     Us</a>

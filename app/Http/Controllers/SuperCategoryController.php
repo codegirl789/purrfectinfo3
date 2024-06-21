@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class SuperCategoryController extends Controller
 {
-    public function index()
+    public function show(string $id)
     {
-        $super_categories = SuperCategory::all();
-        return view('frontend.super_category.index', compact('super_categories'));
+        $super_category = SuperCategory::where('id', '=', $id)->first();
+        $posts = $super_category->Posts()->paginate(12);
+        return view('frontend.super_category.show', compact('super_category', 'posts'));
     }
 }
