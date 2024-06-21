@@ -29,28 +29,30 @@
 
     <div class="container mx-auto md:w-11/12 md:sticky md:top-0 bg-white z-50 shadow-sm px-4 rounded-b-2xl">
         <header class=" flex flex-col md:flex-row items-center justify-between py-2">
-            <a href="#" class="font-semibold text-xl leading-10 uppercase">
+            <a href="#" class=" font-semibold text-xl leading-10 uppercase">
                 PURRFECTINFO
             </a>
 
-            <div class="flex items-center mt-2 md:mt-0">
+            <div class="w-3/5 mx-auto flex items-center mt-2 md:mt-0">
                 <a href="{{ route('homepage') }}"
-                    class="ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
+                    class="basis-1/12 ml-4  font-semibold text-blue-hover focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Home</a>
                 <a href="#"
-                    class="ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
-                    focus:rounded-sm focus:outline-blue-500">Services</a>
+                    class="basis-1/12 ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
+                    focus:rounded-sm focus:outline-blue-500">Animals</a>
                 <a href="#"
-                    class="ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
-                    focus:rounded-sm focus:outline-blue-500">Shop</a>
+                    class="basis-1/12 ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
+                    focus:rounded-sm focus:outline-blue-500">Birds</a>
                 <a href="#"
-                    class="ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
-                    focus:rounded-sm focus:outline-blue-500">About
-                    Us</a>
+                    class="basis-1/12 ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
+                    focus:rounded-sm focus:outline-blue-500">Category</a>
                 <a href="#"
-                    class="ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
+                    class="basis-44 text-center ml-4 font-semibold text-gray-600 focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Contact
                     Us</a>
+
+                <input type="text" placeholder="Find an post" wire:model="search_query"
+                    class="ml-4 rounded-xl w-full px-4 py-2 bg-slate-50 shadow-input border-none placeholder-gray-900">
             </div>
 
             <div class="flex items-center mt-2 md:mt-0">
