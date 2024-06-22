@@ -76,43 +76,23 @@
 
                         <div class="flex flex-col">
                             <div class="flex space-x-4 items-center">
-                                <div>
-                                    @auth
-                                        @if ($post->id % 2 != 0)
-                                            <i class="fa-solid text-red fa-xl fa-heart"></i>
-                                        @else
-                                            <i class="fa-regular fa-xl fa-heart"></i>
-                                        @endif
-                                    @else
-                                        @if ($post->id % 2 != 0)
-                                            <a href="{{ route('login') }}">
-                                                <i class="fa-solid text-red fa-xl fa-heart"></i>
-                                            </a>
-                                        @else
-                                            <a href="{{ route('login') }}">
-                                                <i class="fa-regular fa-xl fa-heart"></i>
-                                            </a>
-                                        @endif
-                                    @endauth
-                                    <span class="text-lg text-gray-500">
-                                        {{ $post->Likes->count() }}
-                                    </span>
-                                </div>
-                                <div class="">
-                                    <i class="fa-regular text-gray-500 fa-xl fa-comment"></i>
-                                    <span class="text-lg text-gray-500">
-                                        {{ $post->Comments->count() }}
-                                    </span>
-                                </div>
-                                @guest
-                                    <p class="text-xs text-gray-500">login to like and comment</p>
-                                @endguest
+                                <livewire:heart :post="$post" wire:prevent.self :wire:key="'key-'.$post->id">
+
+                                    <div class="">
+                                        <i class="fa-regular text-gray-500 fa-xl fa-comment"></i>
+                                        <span class="text-lg text-gray-500">
+                                            {{ $post->Comments->count() }}
+                                        </span>
+                                    </div>
+                                    @guest
+                                        <p class="text-xs text-gray-500">login to like and comment</p>
+                                    @endguest
 
                             </div>
                         </div>
 
                         <a href="{{ route('category.show', $post->Category->id) }}"
-                            class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->Category->color }} text-white">
+                            class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->Status->classes }}">
                             {{ $post->Category->name }}
                         </a>
                     </div>

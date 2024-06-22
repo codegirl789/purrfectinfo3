@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model
 {
@@ -50,5 +51,10 @@ class Post extends Model
         return Post::where('user_id', $user->id)
             ->where('id', $this->id)
             ->exists();
+    }
+
+    public function likedBy(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'likes', 'post_id', 'user_id')->withTimestamps();
     }
 }

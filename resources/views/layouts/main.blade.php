@@ -69,7 +69,7 @@
                                     onclick="event.preventDefault();
                                               this.closest('form').submit();"
                                     class="font-semibold text-gray-600 focus:outline focus:outline-2 hover:text-blue focus:rounded-sm focus:outline-blue-500 ">
-                                    {{ __('Log Out') }}
+                                    {{ __('Log out') }}
                                 </a>
                             </form>
                         @else
@@ -95,7 +95,7 @@
     <main class="container md:w-11/12  w-11/12 gap-x-6 mx-auto flex flex-col md:flex-row md:my-4">
         <div class="md:w-1/4 mx-auto md:mx-0  w-full blue">
             <div class=" md:sticky md:top-20  md:mt-2 mt-2">
-                @guest
+                @auth
                     <div class="bg-white border-2 border-blue shadow rounded-b-lg"
                         style="
 border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
@@ -104,8 +104,66 @@ background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(
 background-origin: border-box;
 background-clip: content-box, border-box;
 ">
+                        <div class="flex justify-between items-center p-2">
+                            <div class="flex space-x-2 font-semibold text-base py-2 px-2">
+                                <img src="https://i.pravatar.cc/60" alt="avatar" class="w-10 h-10 rounded-full">
+                                <div class="flex flex-col -space-y-0">
+                                    <span>
+                                        {{ Auth::user()->name }}
+                                    </span>
+                                    <span class="text-xs font-normal"> Welcome to blog </span>
+                                </div>
+                            </div>
+                            <form method="POST" action="{{ route('logout') }}"
+                                class="basis-20 text-center bg-gray-50 rounded-3xl shadow py-2">
+                                @csrf
 
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                              this.closest('form').submit();"
+                                    class=" font-semibold text-gray-800 focus:outline focus:outline-2 hover:text-blue focus:rounded-sm focus:outline-blue-500 ">
+                                    {{ __('Log out') }}
+                                </a>
+                            </form>
+                        </div>
+                        <div class="flex flex-col px-2 pb-4 space-y-1">
+                            <a href="{{ route('register') }}"
+                                class="flex justify-between items-center bg-gray-50 text-gray-800 hover:bg-blue hover:text-white rounded-3xl shadow  py-2 px-4 relative">
+                                <span>
+                                    My Posts
+                                </span>
+                                <i
+                                    class="fa-solid text-blue absolute w-9 h-9 bg-white rounded-full top-0 right-0 leading-9 text-center fa-lg fa-file-lines"></i>
+                            </a>
 
+                            <a href="{{ route('register') }}"
+                                class="flex justify-between items-center bg-gray-50 text-gray-800 hover:bg-blue hover:text-white rounded-3xl shadow  py-2 px-4 relative">
+                                <span>
+                                    My Comments
+                                </span>
+                                <i
+                                    class="fa-solid text-blue absolute w-9 h-9 bg-white rounded-full top-0 right-0 leading-9 text-center fa-lg fa-comments"></i>
+                            </a>
+
+                            <a href="{{ route('register') }}"
+                                class="flex justify-between items-center bg-gray-50 text-gray-800 hover:bg-blue hover:text-white rounded-3xl shadow  py-2 px-4 relative">
+                                <span>
+                                    Liked Posts
+                                </span>
+                                <i
+                                    class="fa-solid text-blue absolute w-9 h-9 bg-white rounded-full top-0 right-0 leading-9 text-center fa-lg fa-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                @else
+                    <div class="bg-white border-2 border-blue shadow rounded-b-lg"
+                        style="
+border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
+border-image-slice: 1;
+background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
+background-origin: border-box;
+background-clip: content-box, border-box;
+">
                         <div class="text-center px-6 py-2 pt-6">
                             <h3 class="font-semibold text-base">
                                 PurrfectInfo Blog
@@ -126,7 +184,7 @@ background-clip: content-box, border-box;
                             </a>
                         </div>
                     </div>
-                @endguest
+                @endauth
 
                 @guest
                     <div class="bg-white  shadow rounded-lg md:mt-5 my-2">

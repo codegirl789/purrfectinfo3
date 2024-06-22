@@ -36,29 +36,31 @@
             </h2>
 
             <div class="">
-                {{ $posts->links() }}
+                {{-- {{ $categories->links() }} --}}
             </div>
         </div>
 
         <div class="py-4">
             <div class="grid grid-cols-3 gap-4">
-                @foreach ($posts as $post)
+                @foreach ($categories as $category)
                     <div class="card rounded-lg shadow bg-white">
                         <div class="image">
-                            <a href="{{ route('posts.show', $post->id) }}">
-                                <img src="{{ asset($post->image) }}" alt="post image" class="rounded-t-lg object-cover">
+                            <a href="{{ route('category.show', $category->id) }}">
+                                <img src="{{ asset($category->image) }}" alt="category image"
+                                    class="rounded-t-lg object-cover">
                             </a>
                         </div>
                         <div class="content p-2">
                             <div class="flex justify-between items-center pb-2">
-                                <a href="{{ route('category.show', $post->Category->id) }}"
-                                    class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->Category->color }} text-white">
-                                    {{ $post->Category->name }}
+                                <a href="{{ route('category.show', $category->id) }}"
+                                    class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $category->color }} text-white">
+                                    {{ $category->name }}
                                 </a>
-                                <span class="text-gray-500 text-xs">{{ $post->created_at->diffForHumans() }}</span>
+                                <span class="text-gray-500 text-xs">{{ $category->created_at->diffForHumans() }}</span>
                             </div>
-                            <a href="{{ route('posts.show', $post->id) }}"
-                                class="text-lg font-semibold hover:underline">{{ $post->title }}</a>
+                            <a href="{{ route('category.show', $category->id) }}" class="text-lg">
+                                {{ $category->description }}
+                            </a>
                         </div>
                     </div>
                 @endforeach
