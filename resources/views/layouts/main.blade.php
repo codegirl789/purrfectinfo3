@@ -44,12 +44,8 @@
                     class="basis-16 mx-2 lg:mx-0 text-center font-semibold text-gray-600 focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Birds</a>
                 <a href="{{ route('category.index') }}"
-                    class="basis-20 mr-2 lg:mx-0 text-center font-semibold text-gray-600 focus:outline focus:outline-2
+                    class="basis-20 mr-2 lg:mx-2 text-center font-semibold text-gray-600 focus:outline focus:outline-2
                     focus:rounded-sm focus:outline-blue-500">Categories</a>
-                <a href="{{ route('contact.create') }}"
-                    class="basis-20 ml-2 lg:mx-2 text-center font-semibold text-gray-600 focus:outline focus:outline-2
-                    focus:rounded-sm focus:outline-blue-500">Contact
-                    Us</a>
 
                 <livewire:search />
             </div>
@@ -60,7 +56,8 @@
                         @auth
                             <!-- Authentication -->
                             <a href="#">
-                                <img src="https://i.pravatar.cc/60" alt="avatar" class="w-10 h-10 rounded-full">
+                                <img src="{{ asset(Auth::user()->image) }}" alt="avatar"
+                                    class="w-10 h-10 rounded-full object-cover">
                             </a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -75,13 +72,13 @@
                         @else
                             @if (Route::has('login'))
                                 <a href="{{ route('login') }}"
-                                    class="font-semibold text-gray-600 focus:outline focus:outline-2 focus:rounded-sm focus:outline-blue-500">Log
+                                    class="md:block hidden font-semibold text-gray-600 focus:outline focus:outline-2 focus:rounded-sm focus:outline-blue-500">Log
                                     in</a>
                             @endif
 
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}"
-                                    class="ml-4 font-semibold text-gray-600 focus:outline focus:outline-2 focus:rounded-sm focus:outline-blue-500">Register</a>
+                                    class="md:block hidden ml-4 font-semibold text-gray-600 focus:outline focus:outline-2 focus:rounded-sm focus:outline-blue-500">Register</a>
                             @endif
                         @endauth
                     </div>
@@ -89,6 +86,9 @@
 
 
             </div>
+
+            <livewire:search-mobile />
+
         </header>
     </div>
 
@@ -106,7 +106,8 @@ background-clip: content-box, border-box;
 ">
                         <div class="flex justify-between items-center p-2">
                             <div class="flex space-x-2 font-semibold text-base py-2 px-2">
-                                <img src="https://i.pravatar.cc/60" alt="avatar" class="w-10 h-10 rounded-full">
+                                <img src="{{ asset(Auth::user()->image) }}" alt="avatar"
+                                    class="w-10 h-10 rounded-full object-cover">
                                 <div class="flex flex-col -space-y-0">
                                     <span>
                                         {{ Auth::user()->name }}
@@ -154,6 +155,24 @@ background-clip: content-box, border-box;
                                     class="fa-solid text-blue absolute w-9 h-9 bg-white rounded-full top-0 right-0 leading-9 text-center fa-lg fa-comments"></i>
                             </a>
 
+                            <a href="{{ route('user_settings') }}"
+                                class="flex justify-between items-center bg-gray-50 text-gray-800 hover:bg-blue hover:text-white rounded-3xl shadow  py-2 px-4 relative">
+                                <span>
+                                    Profile Settings
+                                </span>
+                                <i
+                                    class="fa-solid text-blue absolute w-9 h-9 bg-white rounded-full top-0 right-0 leading-9 text-center fa-lg fa-gear"></i>
+                            </a>
+
+                            <a href="{{ route('contact.create') }}"
+                                class="flex justify-between items-center bg-gray-50 text-gray-800 hover:bg-blue hover:text-white rounded-3xl shadow  py-2 px-4 relative">
+                                <span>
+                                    Contact Us
+                                </span>
+                                <i
+                                    class="fa-solid text-blue absolute w-9 h-9 bg-white rounded-full top-0 right-0 leading-9 text-center fa-lg fa-envelope"></i>
+                            </a>
+
                         </div>
                     </div>
                 @else
@@ -165,11 +184,11 @@ background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(
 background-origin: border-box;
 background-clip: content-box, border-box;
 ">
-                        <div class="text-center px-6 py-2 pt-6">
+                        <div class="text-center px-6 py-3">
                             <h3 class="font-semibold text-base">
                                 PurrfectInfo Blog
                             </h3>
-                            <p class="text-xs mt-4">
+                            <p class="text-xs">
                                 Please login to like and comment on posts.
                             </p>
                         </div>
@@ -183,14 +202,21 @@ background-clip: content-box, border-box;
                                 class="text-center bg-gray-300 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
                                 Register
                             </a>
+
+                            <a href="{{ route('contact.create') }}"
+                                class="text-center bg-gray-300 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
+                                Contact Us
+                            </a>
+
+
                         </div>
                     </div>
                 @endauth
 
                 @guest
-                    <div class="bg-white  shadow rounded-lg md:mt-5 my-2">
+                    <div class="bg-white lg:block md:block hidden shadow rounded-lg md:mt-5 my-2">
                     @else
-                        <div class="bg-white  shadow rounded-lg  my-2">
+                        <div class="bg-white  lg:block md:block hidden  shadow rounded-lg  my-2">
                         @endguest
                         <div class="text-center p-3">
                             <h3 class="font-semibold text-base">
@@ -213,6 +239,23 @@ background-clip: content-box, border-box;
             <div class="md:w-3/4 w-full mt-2">
                 <div class="mt-0">
                     {{ $slot }}
+                </div>
+            </div>
+
+            <div class="bg-white lg:hidden md:hidden shadow rounded-lg md:mt-5 my-2">
+
+                <div class="text-center p-3">
+                    <h3 class="font-semibold text-base">
+                        Popular Posts
+                    </h3>
+                </div>
+                <div class="flex flex-col px-3 pb-4 space-y-2">
+                    @foreach ($sidebar_posts->take(6) as $post)
+                        <a href="{{ route('posts.show', $post->id) }}"
+                            class=" bg-gray-50 rounded-xl text-sm px-4 py-2 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in ">
+                            {{ $post->title }} <i class="fa-solid fa-up-right-from-square"></i>
+                        </a>
+                    @endforeach
                 </div>
             </div>
     </main>

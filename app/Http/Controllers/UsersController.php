@@ -30,4 +30,9 @@ class UsersController extends Controller
 
         return view('users.liked_posts', compact('posts'));
     }
+
+    public function user_settings()
+    {
+        return view('users.settings');
+    }
 }

@@ -23,7 +23,7 @@
         </div>
 
         <div class="py-4">
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-flow-row md:grid-cols-3 lg:col-span-3  gap-4">
                 @foreach ($posts as $post)
                     <div class="card rounded-lg shadow bg-white">
                         <div class="image">
@@ -34,7 +34,7 @@
                         <div class="content p-2">
                             <div class="flex justify-between items-center pb-2">
                                 <a href="{{ route('posts.show', $post->id) }}"
-                                    class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->status->classes }}">
+                                    class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->status->classes }} ">
                                     {{ $post->Category->name }}
                                 </a>
                                 <span class="text-gray-500 text-xs">{{ $post->created_at->diffForHumans() }}</span>

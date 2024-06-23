@@ -1,4 +1,4 @@
-<div class="relative md:block hidden md:w-3/5 w-full ">
+<div class="relative md:hidden lg:hidden w-full pt-4 pb-2">
     <form wire:submit.prevent="searchForm" class="relative">
         <input type="text" placeholder="Search" wire:model="search"
             class="w-full outline-none border-none py-2 px-4 rounded-3xl  shadow-input placeholder:text-black focus:ring-1 focus:ring-blue focus:ring-opacity-40">

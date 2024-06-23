@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="flex justify-between items-start card bg-white rounded-lg shadow">
+    <div class="flex flex-col md:flex-row justify-between items-start card bg-white rounded-lg shadow">
         <div class="image basis-1/2">
             <img src="{{ asset($super_category->image) }}" alt="category image" class="rounded-l-lg object-cover">
         </div>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="py-4">
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-flow-row md:grid-cols-3 lg:col-span-3  gap-4">
                 @foreach ($categories as $category)
                     <div class="card rounded-lg shadow bg-white">
                         <div class="image">

@@ -23,24 +23,24 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        Color::factory()->create(
-            [
-                'name' => 'Slate',
-                'classes' => 'bg-slate-500'
-            ]
-        );
-        Color::factory()->create(
-            [
-                'name' => 'gray',
-                'classes' => 'bg-gray-500'
-            ]
-        );
-        Color::factory()->create(
-            [
-                'name' => 'zinc',
-                'classes' => 'bg-zinc-500'
-            ]
-        );
+        // Color::factory()->create(
+        //     [
+        //         'name' => 'Slate',
+        //         'classes' => 'bg-slate-500'
+        //     ]
+        // );
+        // Color::factory()->create(
+        //     [
+        //         'name' => 'gray',
+        //         'classes' => 'bg-gray-500'
+        //     ]
+        // );
+        // Color::factory()->create(
+        //     [
+        //         'name' => 'zinc',
+        //         'classes' => 'bg-zinc-500'
+        //     ]
+        // );
         Color::factory()->create(
             [
                 'name' => 'neutral',
@@ -169,7 +169,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Dogs',
             'description' => fake()->paragraph(),
             'image' => 'images/3.png',
-            'color' => 'bg-red-500',
+            'color' => Color::all()->random()->classes,
         ]);
 
         Category::factory()->create([
@@ -177,7 +177,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Cats',
             'description' => fake()->paragraph(),
             'image' => 'images/4.png',
-            'color' => 'bg-red-500',
+            'color' => Color::all()->random()->classes,
         ]);
 
         Category::factory()->create([
@@ -185,7 +185,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Rabbits',
             'description' => fake()->paragraph(),
             'image' => 'images/5.png',
-            'color' => 'bg-red-500',
+            'color' => Color::all()->random()->classes,
         ]);
 
         Category::factory()->create([
@@ -193,7 +193,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Hamsters',
             'description' => fake()->paragraph(),
             'image' => 'images/6.png',
-            'color' => 'bg-red-500',
+            'color' => Color::all()->random()->classes,
         ]);
 
         Category::factory()->create([
@@ -201,7 +201,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Guinea Pigs',
             'description' => fake()->paragraph(),
             'image' => 'images/7.png',
-            'color' => 'bg-red-500',
+            'color' => Color::all()->random()->classes,
         ]);
 
         Category::factory()->create([
@@ -209,7 +209,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Parakeets',
             'description' => fake()->paragraph(),
             'image' => 'images/8.png',
-            'color' => 'bg-red-500',
+            'color' => Color::all()->random()->classes,
         ]);
 
         Category::factory()->create([
@@ -217,7 +217,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Canaries',
             'description' => fake()->paragraph(),
             'image' => 'images/9.png',
-            'color' => 'bg-red-500',
+            'color' => Color::all()->random()->classes,
         ]);
 
         Category::factory()->create([
@@ -225,7 +225,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Cockatiels',
             'description' => fake()->paragraph(),
             'image' => 'images/10.png',
-            'color' => 'bg-red-500'
+            'color' => Color::all()->random()->classes,
         ]);
 
         Category::factory()->create([
@@ -233,7 +233,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Lovebirds',
             'description' => fake()->paragraph(),
             'image' => 'images/11.png',
-            'color' => 'bg-red-500'
+            'color' => Color::all()->random()->classes,
         ]);
 
         Category::factory()->create([
@@ -241,7 +241,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Cockatoos',
             'description' => fake()->paragraph(),
             'image' => 'images/12.png',
-            'color' => 'bg-red-500'
+            'color' => Color::all()->random()->classes,
         ]);
 
         Category::factory()->create([
@@ -249,7 +249,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Linches',
             'description' => fake()->paragraph(),
             'image' => 'images/13.png',
-            'color' => 'bg-red-500'
+            'color' => Color::all()->random()->classes,
         ]);
 
         SubCategory::factory()->create([
@@ -287,13 +287,13 @@ class DatabaseSeeder extends Seeder
         Status::factory()->create(['name' => 'Closed', 'classes' => 'bg-red-500 text-white']);
 
 
-
         User::factory(10)->create();
 
         User::factory()->create([
             'name' => 'Lovepreet',
             'email' => 'lk@gmail.com',
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'image' => fake()->randomElement(['users/mouse.jpg', 'users/tiger.jpg', 'users/dog.jpg', 'users/turtle.jpg', 'users/parrot.jpg']),
         ]);
 
         Post::factory(150)->create();

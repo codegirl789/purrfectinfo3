@@ -41,7 +41,7 @@
         </div>
 
         <div class="py-4">
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-flow-row md:grid-cols-3 lg:col-span-3  gap-4">
                 @foreach ($posts as $post)
                     <div class="card rounded-lg shadow bg-white">
                         <div class="image">

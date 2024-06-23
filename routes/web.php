@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminStatusController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -28,8 +29,11 @@ Route::post('/contact/store', [ContactController::class, 'store'])->name('contac
 
 
 Route::get('user/liked_posts', [UsersController::class, 'user_liked_posts'])->name('user_liked_posts');
-Route::get('user/posts', [UsersController::class, 'user_posts'])->name('user_posts');
+// Route::get('user/posts', [UsersController::class, 'user_posts'])->name('user_posts');
+Route::get('user/settings', [UsersController::class, 'user_settings'])->name('user_settings');
 Route::get('user/comments', [UsersController::class, 'user_comments'])->name('user_comments');
+
+Route::delete('user/comments/destroy/{id}', [CommentController::class, 'user_comments_destroy'])->name('user_comments_destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
