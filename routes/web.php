@@ -10,6 +10,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\SuperCategoryController;
+use App\Http\Controllers\UsersController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,11 @@ Route::get('/category/{id}', [CategoryController::class, 'show'])->name('categor
 Route::get('/post/{id}', [PostController::class, 'show'])->name('posts.show');
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
+
+
+Route::get('user/liked_posts', [UsersController::class, 'user_liked_posts'])->name('user_liked_posts');
+Route::get('user/posts', [UsersController::class, 'user_posts'])->name('user_posts');
+Route::get('user/comments', [UsersController::class, 'user_comments'])->name('user_comments');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

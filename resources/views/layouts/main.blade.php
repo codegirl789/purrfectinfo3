@@ -127,16 +127,25 @@ background-clip: content-box, border-box;
                             </form>
                         </div>
                         <div class="flex flex-col px-2 pb-4 space-y-1">
-                            <a href="{{ route('register') }}"
+                            {{-- <a href="{{ route('user_posts') }}"
                                 class="flex justify-between items-center bg-gray-50 text-gray-800 hover:bg-blue hover:text-white rounded-3xl shadow  py-2 px-4 relative">
                                 <span>
                                     My Posts
                                 </span>
                                 <i
                                     class="fa-solid text-blue absolute w-9 h-9 bg-white rounded-full top-0 right-0 leading-9 text-center fa-lg fa-file-lines"></i>
+                            </a> --}}
+
+                            <a href="{{ route('user_liked_posts') }}"
+                                class="flex justify-between items-center bg-gray-50 text-gray-800 hover:bg-blue hover:text-white rounded-3xl shadow  py-2 px-4 relative">
+                                <span>
+                                    My Liked Posts
+                                </span>
+                                <i
+                                    class="fa-solid text-blue absolute w-9 h-9 bg-white rounded-full top-0 right-0 leading-9 text-center fa-lg fa-heart"></i>
                             </a>
 
-                            <a href="{{ route('register') }}"
+                            <a href="{{ route('user_comments') }}"
                                 class="flex justify-between items-center bg-gray-50 text-gray-800 hover:bg-blue hover:text-white rounded-3xl shadow  py-2 px-4 relative">
                                 <span>
                                     My Comments
@@ -145,14 +154,6 @@ background-clip: content-box, border-box;
                                     class="fa-solid text-blue absolute w-9 h-9 bg-white rounded-full top-0 right-0 leading-9 text-center fa-lg fa-comments"></i>
                             </a>
 
-                            <a href="{{ route('register') }}"
-                                class="flex justify-between items-center bg-gray-50 text-gray-800 hover:bg-blue hover:text-white rounded-3xl shadow  py-2 px-4 relative">
-                                <span>
-                                    Liked Posts
-                                </span>
-                                <i
-                                    class="fa-solid text-blue absolute w-9 h-9 bg-white rounded-full top-0 right-0 leading-9 text-center fa-lg fa-heart"></i>
-                            </a>
                         </div>
                     </div>
                 @else

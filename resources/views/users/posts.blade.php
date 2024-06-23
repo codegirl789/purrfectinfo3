@@ -11,28 +11,10 @@
         </div>
     </div>
 
-    <div class="flex justify-between items-start card bg-white rounded-lg shadow">
-        <div class="image basis-1/2">
-            <img src="{{ asset($category->image) }}" alt="category image" class="rounded-l-lg object-cover">
-        </div>
-        <div class="content basis-1/2 px-3 py-2">
-            <h1 class="text-2xl font-semibold ">{{ $category->name }}</h1>
-            <p>
-                (<span class="text-base font-semibold">{{ $category->Posts->count() }}</span>
-                Posts in this category)
-            </p>
-            <p class="text-base line-clamp-6">
-                {{ $category->description }}
-            </p>
-        </div>
-    </div>
-
     <div class="px-2 py-4">
         <div class="flex justify-between items-center">
-            <h2 class="text-2xl">{{ $category->Posts->count() }} Posts in
-                <span class="font-semibold">
-                    {{ $category->name }}
-                </span>
+            <h2 class="text-2xl">
+                My Posts
             </h2>
 
             <div class="">
@@ -51,9 +33,9 @@
                         </div>
                         <div class="content p-2">
                             <div class="flex justify-between items-center pb-2">
-                                <a href="{{ route('category.show', $category->id) }}"
-                                    class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $category->color }}">
-                                    {{ $category->name }}
+                                <a href="{{ route('posts.show', $post->id) }}"
+                                    class=" cursor-pointer text-xxs font-bold md:uppercase leading-none rounded-full text-center md:w-24 w-16 h-7 md:py-2 flex justify-center items-center md:px-4 px-2 {{ $post->status->classes }}">
+                                    {{ $post->Category->name }}
                                 </a>
                                 <span class="text-gray-500 text-xs">{{ $post->created_at->diffForHumans() }}</span>
                             </div>
@@ -61,8 +43,6 @@
                                 class="text-lg font-semibold hover:underline">
                                 {{ $post->title }}
                             </a>
-
-
                         </div>
                     </div>
                 @endforeach

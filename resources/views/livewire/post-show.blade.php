@@ -7,40 +7,20 @@
                     <a href="#" class="hover:underline">{{ ucfirst($post->title) }}</a>
                 </h4>
 
-                <div class="text-gray-900 mt-2 text-base">
-
-                    <div>
-                        {{ $post->introduction }}
-                    </div>
-
-                    <a href="#">
-                        <img src="{{ asset($post->image) }}" alt="avatar"
-                            class="w-full md:h-96 h-52 object-cover rounded my-4">
-                    </a>
-
-                    {!! $post->content !!}
-
-                </div>
-
-                <div class="flex flex-col md:flex-row md:items-center justify-between md:mt-6 mt-2">
+                <div class="flex flex-col md:flex-row md:items-center justify-between  mt-2">
 
                     <div class="flex flex-col">
                         <div class="flex space-x-4 items-center">
-                            <div>
-                                <i class="fa-regular fa-xl fa-heart"></i>
-                                <span class="text-lg text-gray-500">
-                                    {{ $post->Likes->count() }}
-                                </span>
-                            </div>
-                            <div class="">
-                                <i class="fa-regular fa-xl fa-comment"></i>
-                                <span class="text-lg text-gray-500">
-                                    {{ $post->Comments->count() }}
-                                </span>
-                            </div>
-                            @guest
-                                <p class="text-xs text-gray-500">login to like and comment</p>
-                            @endguest
+                            <livewire:heart :post="$post" wire:prevent.self :wire:key="'key-'.$post->id">
+                                <div class="">
+                                    <i class="fa-regular fa-xl fa-comment"></i>
+                                    <span class="text-lg text-gray-500">
+                                        {{ $post->Comments->count() }}
+                                    </span>
+                                </div>
+                                @guest
+                                    <p class="text-xs text-gray-500">login to like and comment</p>
+                                @endguest
 
                         </div>
                     </div>
@@ -64,6 +44,19 @@
                         </div>
 
                     </div>
+                </div>
+
+                <div class="text-gray-900 mt-2 text-base">
+                    <div>
+                        {{ $post->introduction }}
+                    </div>
+
+                    <a href="#">
+                        <img src="{{ asset($post->image) }}" alt="avatar"
+                            class="w-full md:h-96 h-52 object-cover rounded my-4">
+                    </a>
+
+                    {!! $post->content !!}
                 </div>
             </div>
         </div>
